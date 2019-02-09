@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get :ping, to: 'ping#show'
   get :today, to: 'today#show'
+
+  root to: redirect('/today')
 end
