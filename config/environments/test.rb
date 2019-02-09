@@ -4,6 +4,7 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = false
   config.action_mailer.delivery_method = :test
   config.action_mailer.perform_caching = false
+  config.active_record.dump_schema_after_migration = false
   config.active_storage.service = :test
   config.active_support.deprecation = :stderr
   config.cache_classes = true
