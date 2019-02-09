@@ -12,4 +12,5 @@
 /storage/*
 /tmp/*
 /yarn-error.log
+structure.sql
 yarn-debug.log*
