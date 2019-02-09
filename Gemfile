@@ -10,6 +10,7 @@ gem 'puma'
 
 gem 'bootsnap', require: false
 gem 'coffee-rails'
+gem 'devise'
 gem 'jbuilder'
 gem 'sass-rails'
 gem 'uglifier'
