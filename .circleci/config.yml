@@ -1,0 +1,89 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/forty-web
+    docker:
+      - image: artsy/ruby:2.6.0-node-chrome
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres:10.1-alpine
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Bundle install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          name: Save bundler cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - restore_cache:
+          name: Restore yarn cache
+          key: yarn-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Yarn install
+          command: yarn install
+
+      - save_cache:
+          name: Save yarn cache
+          key: yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
+
+  test:
+    working_directory: ~/forty-web
+    docker:
+      - image: artsy/ruby:2.6.0-node-chrome
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres:10.1-alpine
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Bundle install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - restore_cache:
+          name: Restore yarn cache
+          key: yarn-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Yarn install
+          command: yarn install
+
+      - run:
+          name: Setup database
+          command: mv config/database{.circle,}.yml && bundle exec rake db:create db:migrate
+
+      - run:
+          name: Compile webpacker
+          command: bundle exec rake webpacker:compile
+
+      - run:
+          name: Run tests
+          command: bundle exec rake
+
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
