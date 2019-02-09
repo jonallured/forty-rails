@@ -7,11 +7,11 @@ gem 'rails', '5.2.2'
 gem 'pg'
 gem 'puma'
 
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'jbuilder', '~> 2.5'
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
+gem 'coffee-rails'
+gem 'jbuilder'
+gem 'sass-rails'
+gem 'uglifier'
 gem 'webpacker'
 
 group :development do
