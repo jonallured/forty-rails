@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
 
   get :ping, to: 'ping#show'
+  get :today, to: 'today#show'
 end
