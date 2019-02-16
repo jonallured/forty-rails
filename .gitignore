@@ -1,6 +1,7 @@
 !/log/.keep
 !/storage/.keep
 !/tmp/.keep
+.env
 .yarn-integrity
 /.bundle
 /config/master.key
