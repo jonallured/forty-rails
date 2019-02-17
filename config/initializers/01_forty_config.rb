@@ -5,7 +5,7 @@ module Forty
 
   private_class_method def self.create_config
     attributes = load_config
-    Struct.new("Config", *attributes.keys, keyword_init: true)
+    Struct.new('Config', *attributes.keys, keyword_init: true)
     Struct::Config.new(attributes)
   end
 
