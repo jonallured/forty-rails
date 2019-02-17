@@ -5,8 +5,8 @@ default: &default
 
 development:
   <<: *default
-  database: forty-web_development
+  database: forty_development
 
 test:
   <<: *default
-  database: forty-web_test
+  database: forty_test

@@ -1,5 +1,5 @@
 {
-  "name": "forty-web",
+  "name": "forty",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5"
