@@ -16,7 +16,9 @@ module Forty
 
     raise 'CREDS_GROUP not found' unless group
 
-    {}
+    {
+      stripe_api_key: group[:stripe_api_key]
+    }
   end
 end
 
