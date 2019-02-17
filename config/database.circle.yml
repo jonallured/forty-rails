@@ -1,6 +1,6 @@
 test:
   adapter: postgresql
-  database: forty-web_test
+  database: forty_test
   encoding: unicode
   host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

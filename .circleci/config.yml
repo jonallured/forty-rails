@@ -2,7 +2,7 @@ version: 2
 
 jobs:
   build:
-    working_directory: ~/forty-web
+    working_directory: ~/forty
     docker:
       - image: artsy/ruby:2.6.0-node-chrome
         environment:
@@ -40,7 +40,7 @@ jobs:
             - node_modules/
 
   test:
-    working_directory: ~/forty-web
+    working_directory: ~/forty
     docker:
       - image: artsy/ruby:2.6.0-node-chrome
         environment:
