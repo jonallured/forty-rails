@@ -13,6 +13,7 @@ gem 'coffee-rails'
 gem 'devise'
 gem 'jbuilder'
 gem 'sass-rails'
+gem 'stripe'
 gem 'uglifier'
 gem 'webpacker'
 
