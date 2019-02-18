@@ -13,17 +13,29 @@
     "typescript": "^3.3.3"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.6",
+    "jest": "^24.1.0",
     "prettier": "^1.16.4",
+    "ts-jest": "^23.10.5",
     "webpack-dev-server": "2.11.2"
   },
   "scripts": {
     "prettier": "prettier --write 'app/javascript/**/*.{js,jsx,ts,tsx}'",
-    "prettier-diff": "prettier --list-different 'app/javascript/**/*.{js,jsx,ts,tsx}'"
+    "prettier-diff": "prettier --list-different 'app/javascript/**/*.{js,jsx,ts,tsx}'",
+    "test": "jest"
   },
   "prettier": {
     "bracketSpacing": true,
     "semi": false,
     "singleQuote": true,
     "trailingComma": "es5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/vendor/bundle/",
+      "/config/webpack/"
+    ]
   }
 }

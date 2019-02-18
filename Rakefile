@@ -12,6 +12,12 @@ if %w[development test].include? Rails.env
     abort 'prettier-diff failed' unless $CHILD_STATUS.exitstatus.zero?
   end
 
+  desc 'run jest tests'
+  task :jest do
+    system 'yarn test'
+    abort 'jest failed' unless $CHILD_STATUS.exitstatus.zero?
+  end
+
   Rake::Task[:default].clear
-  task default: %i[rubocop spec prettier_diff]
+  task default: %i[rubocop spec prettier_diff jest]
 end
