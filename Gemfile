@@ -11,6 +11,7 @@ gem 'puma'
 gem 'bootsnap', require: false
 gem 'coffee-rails'
 gem 'devise'
+gem 'haml'
 gem 'jbuilder'
 gem 'sass-rails'
 gem 'stripe'
