@@ -13,6 +13,17 @@
     "typescript": "^3.3.3"
   },
   "devDependencies": {
+    "prettier": "^1.16.4",
     "webpack-dev-server": "2.11.2"
+  },
+  "scripts": {
+    "prettier": "prettier --write 'app/javascript/**/*.{js,jsx,ts,tsx}'",
+    "prettier-diff": "prettier --list-different 'app/javascript/**/*.{js,jsx,ts,tsx}'"
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }
