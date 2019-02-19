@@ -5,6 +5,7 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('Rails is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'webmock/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -19,3 +20,5 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
   end
 end
+
+WebMock.disable_net_connect!(allow_localhost: true)
