@@ -10,6 +10,7 @@ gem 'puma'
 
 gem 'bootsnap', require: false
 gem 'coffee-rails'
+gem 'decent_exposure'
 gem 'devise'
 gem 'haml'
 gem 'jbuilder'

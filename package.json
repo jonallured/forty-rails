@@ -9,6 +9,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-stripe-elements": "^2.0.3",
     "ts-loader": "3.5.0",
     "typescript": "^3.3.3"
   },
