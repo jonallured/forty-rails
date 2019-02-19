@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.6",
     "jest": "^24.1.0",
+    "jest-simple-dot-reporter": "^1.0.3",
     "prettier": "^1.16.4",
     "ts-jest": "^23.10.5",
     "webpack-dev-server": "2.11.2"
@@ -33,6 +34,15 @@
   },
   "jest": {
     "preset": "ts-jest",
+    "verbose": false,
+    "reporters": [
+      [
+        "jest-simple-dot-reporter",
+        {
+          "color": true
+        }
+      ]
+    ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/vendor/bundle/",
