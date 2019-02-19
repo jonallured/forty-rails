@@ -22,7 +22,8 @@
   "scripts": {
     "prettier": "prettier --write 'app/javascript/**/*.{js,jsx,ts,tsx}'",
     "prettier-diff": "prettier --list-different 'app/javascript/**/*.{js,jsx,ts,tsx}'",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc --pretty --noEmit"
   },
   "prettier": {
     "bracketSpacing": true,

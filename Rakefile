@@ -18,6 +18,12 @@ if %w[development test].include? Rails.env
     abort 'jest failed' unless $CHILD_STATUS.exitstatus.zero?
   end
 
+  desc 'run type checks'
+  task :type_check do
+    system 'yarn type-check'
+    abort 'type checks failed' unless $CHILD_STATUS.exitstatus.zero?
+  end
+
   Rake::Task[:default].clear
-  task default: %i[rubocop spec prettier_diff jest]
+  task default: %i[rubocop spec prettier_diff jest type_check]
 end
