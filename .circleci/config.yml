@@ -75,6 +75,10 @@ jobs:
           command: bundle exec rake webpacker:compile
 
       - run:
+          name: Update Chrome
+          command: bundle exec rake webdrivers:chromedriver:update
+
+      - run:
           name: Run tests
           command: bundle exec rake
 
