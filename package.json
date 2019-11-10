@@ -1,4 +1,5 @@
 {
+  "engines": { "node": ">=10.15.3" },
   "name": "forty",
   "private": true,
   "dependencies": {

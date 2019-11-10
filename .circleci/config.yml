@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/forty
     docker:
-      - image: artsy/ruby:2.6.0-node-chrome
+      - image: artsy/ruby:2.6.5-node-chrome
         environment:
           RAILS_ENV: test
 
@@ -42,7 +42,7 @@ jobs:
   test:
     working_directory: ~/forty
     docker:
-      - image: artsy/ruby:2.6.0-node-chrome
+      - image: artsy/ruby:2.6.5-node-chrome
         environment:
           RAILS_ENV: test
       - image: circleci/postgres:10.1-alpine
