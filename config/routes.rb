@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'sign-in', to: 'devise/sessions#new'
-    delete 'sign-out', to: 'devise/sessions#destroy'
+    get 'sign-out', to: 'devise/sessions#destroy'
     get 'sign-up', to: 'devise/registrations#new'
   end
 
