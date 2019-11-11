@@ -14,6 +14,12 @@ if %w[development test].include? Rails.env
     abort 'prettier-check failed' unless $CHILD_STATUS.exitstatus.zero?
   end
 
+  desc 'run typescript check'
+  task :typescript_check do
+    system 'yarn type-check'
+    abort 'typescript checks failed' unless $CHILD_STATUS.exitstatus.zero?
+  end
+
   Rake::Task[:default].clear
-  task default: %i[prettier_check rubocop spec]
+  task default: %i[prettier_check typescript_check rubocop spec]
 end
