@@ -17,13 +17,25 @@
     "typescript": "^3.7.2"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
     "prettier": "prettier --write 'app/javascript/**/*.{js,jsx,ts,tsx}'",
     "prettier-check": "prettier --check 'app/javascript/**/*.{js,jsx,ts,tsx}'",
+    "test": "jest",
     "type-check": "tsc --pretty --noEmit"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/app/javascript/testing/setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/vendor/bundle/",
+      "/config/webpack/"
+    ]
   },
   "prettier": {
     "bracketSpacing": true,
