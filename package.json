@@ -22,7 +22,8 @@
   },
   "scripts": {
     "prettier": "prettier --write 'app/javascript/**/*.{js,jsx,ts,tsx}'",
-    "prettier-check": "prettier --check 'app/javascript/**/*.{js,jsx,ts,tsx}'"
+    "prettier-check": "prettier --check 'app/javascript/**/*.{js,jsx,ts,tsx}'",
+    "type-check": "tsc --pretty --noEmit"
   },
   "prettier": {
     "bracketSpacing": true,
