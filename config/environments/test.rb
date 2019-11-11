@@ -7,7 +7,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.active_storage.service = :test
   config.active_support.deprecation = :stderr
-  config.cache_classes = true
+  config.cache_classes = false
+  config.cache_store = :null_store
   config.consider_all_requests_local = true
   config.eager_load = false
   config.public_file_server.enabled = true
