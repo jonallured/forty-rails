@@ -9,23 +9,23 @@ if %w[development test].include? Rails.env
   end
 
   desc 'run prettier check'
-  task :prettier_check do
+  task prettier_check: :environment do
     system 'yarn run prettier-check'
     abort 'prettier-check failed' unless $CHILD_STATUS.exitstatus.zero?
   end
 
-  desc 'run typescript check'
-  task :typescript_check do
-    system 'yarn type-check'
-    abort 'typescript checks failed' unless $CHILD_STATUS.exitstatus.zero?
+  desc 'run type check'
+  task type_check: :environment do
+    system 'yarn run type-check'
+    abort 'type-check failed' unless $CHILD_STATUS.exitstatus.zero?
   end
 
   desc 'run jest tests'
-  task :jest do
-    system 'yarn test'
+  task jest: :environment do
+    system 'yarn run test'
     abort 'jest failed' unless $CHILD_STATUS.exitstatus.zero?
   end
 
   Rake::Task[:default].clear
-  task default: %i[prettier_check typescript_check jest rubocop spec]
+  task default: %i[prettier_check type_check jest rubocop spec]
 end
