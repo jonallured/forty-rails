@@ -36,11 +36,5 @@
       "/vendor/bundle/",
       "/config/webpack/"
     ]
-  },
-  "prettier": {
-    "bracketSpacing": true,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5"
   }
 }
