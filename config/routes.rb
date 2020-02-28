@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get :ping, to: 'ping#show'
   get :today, to: 'today#show'
 
+  get 'pto', to: 'pto#index'
+  get 'pto/:year', to: 'pto#show', as: :pto_report
+
   get 'work_weeks/:target', to: 'work_weeks#show', as: :work_week
 
   patch 'work_days/:id', to: 'work_days#update'

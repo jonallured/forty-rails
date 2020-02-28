@@ -1,0 +1,18 @@
+#pto
+  %nav
+    .top
+      = link_to "<", pto_report_path(pto_report.prev_year)
+      %p= pto_report.year
+      = link_to ">", pto_report_path(pto_report.next_year)
+    .totals
+      %div
+        %h1= pto_report.ytd_total
+        %p ytd
+      %div
+        %h1= pto_report.grand_total
+        %p total
+  .list
+    %ul
+      - pto_report.entries.each do |entry|
+        %li
+          = link_to entry.listing, work_week_path(entry.target)
