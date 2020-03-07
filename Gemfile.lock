@@ -85,6 +85,8 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
+    decent_exposure (3.0.2)
+      activesupport (>= 4.0)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -284,6 +286,7 @@ DEPENDENCIES
   bootsnap
   capybara
   coffee-rails
+  decent_exposure
   devise
   dotenv-rails
   factory_bot_rails
