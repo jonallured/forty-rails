@@ -16,8 +16,13 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.before(:each, type: :system) do
+    config.include Warden::Test::Helpers
     Capybara.server = :puma, { Silent: true }
     driven_by :selenium_chrome_headless
+  end
+
+  config.after(:each, type: :system) do
+    Warden.test_reset!
   end
 end
 
