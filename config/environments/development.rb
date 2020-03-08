@@ -25,4 +25,8 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
     config.cache_store = :null_store
   end
+
+  config.middleware.insert_after(
+    ActionDispatch::Static, Rack::LiveReload, live_reload_port: 4042
+  )
 end

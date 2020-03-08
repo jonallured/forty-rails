@@ -10,6 +10,7 @@ Layout/LeadingCommentSpace:
 
 Metrics/BlockLength:
   Exclude:
+    - 'config/environments/**/*'
     - 'config/routes.rb'
     - 'spec/**/*'
 
