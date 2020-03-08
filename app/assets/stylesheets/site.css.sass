@@ -1,16 +1,105 @@
-$bright-white: #fff
-$off-white: #eee
-$gray: #999
-$bright-green: #29FF71
-$off-black: #0A2411
+$bright-white: #ffffff
 
-$prompt: "Prompt"
-$open-sans: "Open Sans"
+$light-green: #e4ffed
+$middle-green: #afffca
+$bright-green: #29ff71
 
-a
-  color: $off-white
+$light-gray: #e0e3e1
+$middle-gray: #829087
+$off-black: #05200e
+
+$prompt: Prompt
+$open-sans: Open Sans
+
+$transition-config: 0.2s ease-in
 
 body
-  background-color: $bright-white
-  color: $off-white
+  background-color: $light-green
+  color: $off-black
   font-family: $open-sans
+  margin: 0
+  padding: 0
+
+  ::selection
+    background-color: $middle-green
+
+  textarea, select, input, button
+    outline: none
+
+  a
+    color: $off-black
+
+  .wrapper
+    background-color: $bright-white
+    margin: 0 auto
+    padding: 20px
+    width: 800px
+
+    header
+      nav
+        border-bottom: 10px solid $light-gray
+        display: flex
+        justify-content: flex-end
+        margin: 0 auto
+        width: 800px
+
+        a
+          color: $off-black
+          font-family: $prompt
+          font-weight: 700
+          font-size: 20px
+          margin: 0
+          padding: 4px 20px
+          text-decoration: none
+          transition: background-color $transition-config
+          &:hover
+            background-color: $light-green
+
+    main
+      #week_entry_root
+        .table
+          display: flex
+          flex-direction: row
+          justify-content: space-between
+
+          section
+            display: flex
+            flex-direction: column
+            text-align: right
+            width: 100px
+
+            p
+              color: $off-black
+              font-family: $open-sans
+              font-size: 20px
+              margin: 0
+
+              &.total
+                font-size: 30px
+                margin-top: 20px
+
+            input
+              border: none
+              border-bottom: 10px solid $light-gray
+              color: $off-black
+              font-family: $open-sans
+              font-size: 30px
+              margin: 0
+              padding: 20px 0 0
+              text-align: right
+              width: 100%
+              transition: border-bottom $transition-config
+
+              &::placeholder
+                color: $middle-gray
+
+              &:focus
+                border-bottom: 10px solid $bright-green
+
+              &:hover
+                border-bottom: 10px solid $middle-gray
+
+                &:focus
+                  border-bottom: 10px solid $bright-green
+
+    footer

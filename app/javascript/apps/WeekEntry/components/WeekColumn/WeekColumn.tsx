@@ -76,29 +76,33 @@ export const WeekColumn: React.FC<WeekColumnProps> = props => {
   }
 
   return (
-    <>
-      <h1>{day}</h1>
+    <section>
+      <p>{day.substring(0, 3)}</p>
       <input
         onChange={handleInTimeChange}
         name={`${day.toLowerCase()}_in`}
+        placeholder="in"
         type="text"
       />
       <input
         onChange={handleOutTimeChange}
         name={`${day.toLowerCase()}_out`}
+        placeholder="out"
         type="text"
       />
       <input
         onChange={handlePtoAmountChange}
         name={`${day.toLowerCase()}_pto`}
+        placeholder="pto"
         type="text"
       />
       <input
         onChange={handleAdjustAmountChange}
         name={`${day.toLowerCase()}_adjust`}
+        placeholder="adjust"
         type="text"
       />
-      <p className={`${day.toLowerCase()}_total`}>{`${totalTime}:00`}</p>
-    </>
+      <p className={`${day.toLowerCase()}_total total`}>{`${totalTime}:00`}</p>
+    </section>
   )
 }

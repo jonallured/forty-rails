@@ -4,10 +4,19 @@
     %title Forty
     = csrf_meta_tags
 
-    %link(href="https://fonts.googleapis.com/css?family=Prompt:300,900" rel="stylesheet")
+    %link(href="https://fonts.googleapis.com/css?family=Prompt:300,700,900" rel="stylesheet")
     %link(href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet")
 
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
 
-  %body= yield
+  %body
+    .wrapper
+      %header
+        %nav
+          %a(href="/today") today
+          %a(href="/pto") pto
+          %a(href="/data") data
+          %a(href="/account") account
+      %main= yield
+      %footer
