@@ -15,7 +15,7 @@ export const WeekEntry: React.FC<WeekEntryProps> = props => {
   return (
     <>
       <h1>{dates}</h1>
-      {weekColumns}
+      <div className="table">{weekColumns}</div>
     </>
   )
 }
