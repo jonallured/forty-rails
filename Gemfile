@@ -28,7 +28,9 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
+  gem 'guard-livereload', require: false
   gem 'pry-rails'
+  gem 'rack-livereload'
   gem 'rspec-rails'
   gem 'rubocop-rails'
   gem 'webdrivers'
