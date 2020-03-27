@@ -3,7 +3,7 @@ class WorkDay < ApplicationRecord
   validates :date, presence: true, uniqueness: { scope: :user_id }
   delegate :year, to: :date
 
-  def as_json
+  def as_json(*_)
     {
       adjustMinutes: adjust_minutes,
       dayOfWeek: date.strftime('%A'),
