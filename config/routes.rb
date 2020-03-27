@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   get 'work_weeks/:target', to: 'work_weeks#show'
 
+  patch 'work_days/:id', to: 'work_days#update'
+
   root to: redirect('/today')
 end

@@ -1,14 +1,17 @@
 import React, { useState } from "react"
+import { FortyTime } from "forty-time"
 
 export interface WorkDayData {
   adjustAmount: string
   dayOfWeek: string
+  id: number
   inTime: string
   outTime: string
   ptoAmount: string
 }
 
 export interface WeekColumnProps {
+  handleWorkDayUpdate: (id, key, value) => void
   workDay: WorkDayData
 }
 
@@ -46,6 +49,8 @@ export const WeekColumn: React.FC<WeekColumnProps> = props => {
       adjustAmount
     )
     setTotalTime(newTotal)
+    const inMinutes = FortyTime.parse(newInTime).minutes
+    props.handleWorkDayUpdate(workDay.id, "in_minutes", inMinutes)
   }
 
   const handleOutTimeChange = (e): void => {
@@ -58,6 +63,8 @@ export const WeekColumn: React.FC<WeekColumnProps> = props => {
       adjustAmount
     )
     setTotalTime(newTotal)
+    const outMinutes = FortyTime.parse(newOutTime).minutes
+    props.handleWorkDayUpdate(workDay.id, "out_minutes", outMinutes)
   }
 
   const handlePtoAmountChange = (e): void => {
@@ -70,6 +77,8 @@ export const WeekColumn: React.FC<WeekColumnProps> = props => {
       adjustAmount
     )
     setTotalTime(newTotal)
+    const ptoMinutes = FortyTime.parse(newPtoAmount).minutes
+    props.handleWorkDayUpdate(workDay.id, "pto_minutes", ptoMinutes)
   }
 
   const handleAdjustAmountChange = (e): void => {
@@ -82,6 +91,8 @@ export const WeekColumn: React.FC<WeekColumnProps> = props => {
       newAdjustAmount
     )
     setTotalTime(newTotal)
+    const adjustMinutes = FortyTime.parse(newAdjustAmount).minutes
+    props.handleWorkDayUpdate(workDay.id, "adjust_minutes", adjustMinutes)
   }
 
   return (
