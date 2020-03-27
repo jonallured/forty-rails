@@ -1,7 +1,15 @@
 import React, { useState } from "react"
 
+export interface WorkDayData {
+  adjustAmount: string
+  dayOfWeek: string
+  inTime: string
+  outTime: string
+  ptoAmount: string
+}
+
 export interface WeekColumnProps {
-  day: string
+  workDay: WorkDayData
 }
 
 const computeTotalTime = (
@@ -19,12 +27,13 @@ const computeTotalTime = (
 }
 
 export const WeekColumn: React.FC<WeekColumnProps> = props => {
-  const { day } = props
+  const { workDay } = props
+  const day = workDay.dayOfWeek
 
-  const [inTime, setInTime] = useState("0:00")
-  const [outTime, setOutTime] = useState("0:00")
-  const [ptoAmount, setPtoAmount] = useState("0:00")
-  const [adjustAmount, setAdjustAmount] = useState("0:00")
+  const [inTime, setInTime] = useState(workDay.inTime)
+  const [outTime, setOutTime] = useState(workDay.outTime)
+  const [ptoAmount, setPtoAmount] = useState(workDay.ptoAmount)
+  const [adjustAmount, setAdjustAmount] = useState(workDay.adjustAmount)
   const [totalTime, setTotalTime] = useState(0)
 
   const handleInTimeChange = (e): void => {
@@ -83,24 +92,28 @@ export const WeekColumn: React.FC<WeekColumnProps> = props => {
         name={`${day.toLowerCase()}_in`}
         placeholder="in"
         type="text"
+        value={inTime}
       />
       <input
         onChange={handleOutTimeChange}
         name={`${day.toLowerCase()}_out`}
         placeholder="out"
         type="text"
+        value={outTime}
       />
       <input
         onChange={handlePtoAmountChange}
         name={`${day.toLowerCase()}_pto`}
         placeholder="pto"
         type="text"
+        value={ptoAmount}
       />
       <input
         onChange={handleAdjustAmountChange}
         name={`${day.toLowerCase()}_adjust`}
         placeholder="adjust"
         type="text"
+        value={adjustAmount}
       />
       <p className={`${day.toLowerCase()}_total total`}>{`${totalTime}:00`}</p>
     </section>

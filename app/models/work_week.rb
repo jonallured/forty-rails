@@ -15,6 +15,7 @@ class WorkWeek
     @user = user
     @year = year.to_i
     @number = number.to_i
+    @work_days = []
   end
 
   def find_or_create
@@ -23,12 +24,18 @@ class WorkWeek
     end
   end
 
+  def as_json(_)
+    {
+      workDays: @work_days
+    }
+  end
+
   private
 
   def dates
     raise InvalidDates unless @year.positive? && @number.positive?
 
-    (1..5).map { |day| Date.commercial(@year, @number, day) }
+    @dates ||= (1..5).map { |day| Date.commercial(@year, @number, day) }
   rescue StandardError
     raise InvalidDates
   end
