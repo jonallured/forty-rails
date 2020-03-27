@@ -11,6 +11,7 @@ gem 'bootsnap', require: false
 gem 'coffee-rails'
 gem 'decent_exposure'
 gem 'devise'
+gem 'forty_time'
 gem 'haml'
 gem 'jbuilder'
 gem 'sass-rails'
