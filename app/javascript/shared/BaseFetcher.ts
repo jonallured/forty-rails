@@ -18,7 +18,7 @@ export class BaseFetcher {
     const headers = {
       Accept: jsonContentType,
       "Content-Type": "application/json",
-      "X-CSRF-TOKEN": this.token
+      "X-CSRF-TOKEN": this.token,
     }
 
     const credentials: RequestCredentials = "same-origin"
@@ -27,10 +27,10 @@ export class BaseFetcher {
       body: JSON.stringify(body),
       credentials,
       headers,
-      method
+      method,
     }
 
-    return fetch(url, options).then(response => {
+    return fetch(url, options).then((response) => {
       if (!response.ok) throw new Error("non 200 response")
 
       const contentType = response.headers.get("Content-Type")

@@ -10,7 +10,7 @@ const defaultWorkDays = [
     id: 1,
     inMinutes: 540,
     outMinutes: 1020,
-    ptoMinutes: 0
+    ptoMinutes: 0,
   },
   {
     adjustMinutes: 0,
@@ -18,7 +18,7 @@ const defaultWorkDays = [
     id: 2,
     inMinutes: 540,
     outMinutes: 1020,
-    ptoMinutes: 0
+    ptoMinutes: 0,
   },
   {
     adjustMinutes: 0,
@@ -26,7 +26,7 @@ const defaultWorkDays = [
     id: 3,
     inMinutes: 540,
     outMinutes: 1020,
-    ptoMinutes: 0
+    ptoMinutes: 0,
   },
   {
     adjustMinutes: 0,
@@ -34,7 +34,7 @@ const defaultWorkDays = [
     id: 4,
     inMinutes: 540,
     outMinutes: 1020,
-    ptoMinutes: 0
+    ptoMinutes: 0,
   },
   {
     adjustMinutes: 0,
@@ -42,8 +42,8 @@ const defaultWorkDays = [
     id: 5,
     inMinutes: 540,
     outMinutes: 1020,
-    ptoMinutes: 0
-  }
+    ptoMinutes: 0,
+  },
 ]
 
 const mockFetcher: WeekEntryFetcher = new WeekEntryFetcher("invalid")
@@ -52,13 +52,13 @@ mockFetcher.updateWorkDay = jest.fn()
 const defaultProps: WeekEntryProps = {
   dates: "Feb 17-21, 2020",
   fetcher: mockFetcher,
-  workWeek: { workDays: defaultWorkDays }
+  workWeek: { workDays: defaultWorkDays },
 }
 
 describe("WeekEntry", () => {
   it("renders 5 columns", () => {
     const props = {
-      ...defaultProps
+      ...defaultProps,
     }
     const wrapper = mount(<WeekEntry {...props} />)
     expect(wrapper.find("WeekColumn")).toHaveLength(5)
