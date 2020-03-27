@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const props: WeekEntryProps = {
     ...parsedProps,
-    fetcher
+    fetcher,
   }
 
   ReactDOM.render(<WeekEntry {...props} />, root)

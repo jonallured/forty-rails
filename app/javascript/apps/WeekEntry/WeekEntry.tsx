@@ -29,11 +29,11 @@ const computeWorkDayData = (workDay: WorkDay): WorkDayData => {
     id: workDay.id,
     inTime: FortyTime.parse(workDay.inMinutes).toString(),
     outTime: FortyTime.parse(workDay.outMinutes).toString(),
-    ptoAmount: FortyTime.parse(workDay.ptoMinutes).toString()
+    ptoAmount: FortyTime.parse(workDay.ptoMinutes).toString(),
   }
 }
 
-export const WeekEntry: React.FC<WeekEntryProps> = props => {
+export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
   const { dates, workWeek } = props
 
   const handleWorkDayUpdate = (id, key, value): void => {
@@ -41,7 +41,7 @@ export const WeekEntry: React.FC<WeekEntryProps> = props => {
     props.fetcher.updateWorkDay(id, body)
   }
 
-  const weekColumns = workWeek.workDays.map(workDay => {
+  const weekColumns = workWeek.workDays.map((workDay) => {
     const workDayData = computeWorkDayData(workDay)
     return (
       <WeekColumn

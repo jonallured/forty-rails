@@ -29,7 +29,7 @@ const computeTotalTime = (
   return total || 0
 }
 
-export const WeekColumn: React.FC<WeekColumnProps> = props => {
+export const WeekColumn: React.FC<WeekColumnProps> = (props) => {
   const { workDay } = props
   const day = workDay.dayOfWeek
 
