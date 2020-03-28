@@ -20,13 +20,13 @@ const computeTotalTime = (
   outTime: string,
   ptoAmount: string,
   adjustAmount: string
-): number => {
-  const start = Number.parseInt(inTime)
-  const end = Number.parseInt(outTime)
-  const pto = Number.parseInt(ptoAmount)
-  const adjust = Number.parseInt(adjustAmount)
-  const total = end - start + pto + adjust
-  return total || 0
+): string => {
+  const start = FortyTime.parse(inTime)
+  const end = FortyTime.parse(outTime)
+  const pto = FortyTime.parse(ptoAmount)
+  const adjust = FortyTime.parse(adjustAmount)
+  const total = end.minus(start).plus(pto).plus(adjust)
+  return total.toString()
 }
 
 export const WeekColumn: React.FC<WeekColumnProps> = (props) => {
@@ -37,7 +37,13 @@ export const WeekColumn: React.FC<WeekColumnProps> = (props) => {
   const [outTime, setOutTime] = useState(workDay.outTime)
   const [ptoAmount, setPtoAmount] = useState(workDay.ptoAmount)
   const [adjustAmount, setAdjustAmount] = useState(workDay.adjustAmount)
-  const [totalTime, setTotalTime] = useState(0)
+  const initalTotal = computeTotalTime(
+    workDay.inTime,
+    workDay.outTime,
+    workDay.ptoAmount,
+    workDay.adjustAmount
+  )
+  const [totalTime, setTotalTime] = useState(initalTotal)
 
   const handleInTimeChange = (e): void => {
     const newInTime = e.target.value
@@ -126,7 +132,7 @@ export const WeekColumn: React.FC<WeekColumnProps> = (props) => {
         type="text"
         value={adjustAmount}
       />
-      <p className={`${day.toLowerCase()}_total total`}>{`${totalTime}:00`}</p>
+      <p className={`${day.toLowerCase()}_total total`}>{totalTime}</p>
     </section>
   )
 }
