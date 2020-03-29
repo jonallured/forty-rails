@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -ex
+
+heroku pg:reset DATABASE_URL --confirm forty-staging --remote staging
+staging_url=$(heroku config:get DATABASE_URL --remote staging)
+heroku pg:pull DATABASE_URL $staging_url --remote production
+dropdb forty_development
+heroku pg:pull DATABASE_URL forty_development --remote staging
