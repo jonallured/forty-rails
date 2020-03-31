@@ -1,6 +1,24 @@
 require_relative 'config/application'
 Rails.application.load_tasks
 
+desc 'import legacy work day data'
+task :import_work_days, [:path] => :environment do |_t, args|
+  WorkDay.destroy_all
+  path = args[:path]
+  data = File.read(path)
+  json = JSON.parse(data, symbolize_names: true)
+  user = User.find_by(email: 'jon.allured@gmail.com')
+  json.each do |attrs|
+    attrs[:adjust_minutes] = attrs[:adjust_minutes] * -1
+
+    attrs.each do |key, value|
+      attrs[key] = value == 0 ? nil : value
+    end
+
+    user.work_days.create(attrs)
+  end
+end
+
 if %w[development test].include? Rails.env
   require 'rubocop/rake_task'
   desc 'Run RuboCop'

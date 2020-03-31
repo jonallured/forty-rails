@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -ex
+
+cd ../monolithium
+./bin/export_data
+cd ../forty-web
+rake import_work_days[../monolithium/work_days.json]
