@@ -26,11 +26,18 @@ class WorkWeek
 
   def as_json(_)
     {
+      dateSpan: date_span,
       workDays: @work_days
     }
   end
 
   private
+
+  def date_span
+    monday = dates.first
+    friday = dates.last
+    (monday..friday).to_s(:date_span)
+  end
 
   def dates
     raise InvalidDates unless @year.positive? && @number.positive?
