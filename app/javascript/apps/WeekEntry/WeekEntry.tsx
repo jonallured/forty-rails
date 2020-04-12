@@ -20,6 +20,9 @@ export interface WorkWeek {
 
 export interface WeekEntryProps {
   fetcher: WeekEntryFetcher
+  lastWeekPath: string
+  nextWeekPath: string
+  thisWeekPath: string
   workWeek: WorkWeek
 }
 
@@ -35,7 +38,7 @@ const computeWorkDayData = (workDay: WorkDay): WorkDayData => {
 }
 
 export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
-  const { workWeek } = props
+  const { lastWeekPath, nextWeekPath, thisWeekPath, workWeek } = props
 
   const handleWorkDayUpdate = (id, key, value): void => {
     const body = { [key]: value }
@@ -57,6 +60,9 @@ export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
     <>
       <Header
         dateSpan={workWeek.dateSpan}
+        lastWeekPath={lastWeekPath}
+        nextWeekPath={nextWeekPath}
+        thisWeekPath={thisWeekPath}
       />
       <div className="table">{weekColumns}</div>
     </>
