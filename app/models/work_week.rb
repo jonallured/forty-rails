@@ -31,6 +31,10 @@ class WorkWeek
     }
   end
 
+  def target_date
+    dates.first
+  end
+
   private
 
   def date_span
