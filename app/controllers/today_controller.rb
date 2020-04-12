@@ -1,6 +1,6 @@
 class TodayController < ApplicationController
   def show
-    target = Time.zone.today.strftime('%Y-%V')
+    target = TargetSlug.for(Time.zone.today)
     redirect_to work_week_path(target)
   end
 end
