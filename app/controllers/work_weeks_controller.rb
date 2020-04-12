@@ -8,7 +8,6 @@ class WorkWeeksController < ApplicationController
 
   expose(:props) do
     {
-      dates: 'Feb 17-21, 2020',
       workWeek: work_week
     }
   end

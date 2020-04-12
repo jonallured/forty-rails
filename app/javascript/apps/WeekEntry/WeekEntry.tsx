@@ -1,5 +1,6 @@
 import React from "react"
 import { WeekColumn, WorkDayData } from "./components/WeekColumn"
+import { Header } from "./components/Header"
 import { WeekEntryFetcher } from "./WeekEntryFetcher"
 import { FortyTime } from "forty-time"
 
@@ -12,12 +13,12 @@ interface WorkDay {
   ptoMinutes: number
 }
 
-interface WorkWeek {
+export interface WorkWeek {
+  dateSpan: string
   workDays: WorkDay[]
 }
 
 export interface WeekEntryProps {
-  dates: string
   fetcher: WeekEntryFetcher
   workWeek: WorkWeek
 }
@@ -34,7 +35,7 @@ const computeWorkDayData = (workDay: WorkDay): WorkDayData => {
 }
 
 export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
-  const { dates, workWeek } = props
+  const { workWeek } = props
 
   const handleWorkDayUpdate = (id, key, value): void => {
     const body = { [key]: value }
@@ -54,7 +55,9 @@ export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
 
   return (
     <>
-      <h1>{dates}</h1>
+      <Header
+        dateSpan={workWeek.dateSpan}
+      />
       <div className="table">{weekColumns}</div>
     </>
   )
