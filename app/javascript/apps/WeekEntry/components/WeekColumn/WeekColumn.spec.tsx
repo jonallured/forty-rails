@@ -1,17 +1,15 @@
 import React from "react"
 import { mount } from "enzyme"
 import { WeekColumn, WeekColumnProps } from "./"
-
-const defaultWorkDay = {
-  adjustAmount: "0:00",
-  dayOfWeek: "Monday",
-  inTime: "8:00",
-  outTime: "17:00",
-  ptoAmount: "0:00",
-}
+import { defaultDay } from "../../WeekEntry.spec"
 
 const defaultProps: WeekColumnProps = {
-  workDay: defaultWorkDay,
+  handleWorkDayUpdate: jest.fn(),
+  workDay: {
+    ...defaultDay,
+    dayOfWeek: "Monday",
+    id: 1,
+  },
 }
 
 describe("WeekColumn", () => {

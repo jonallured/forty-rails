@@ -1,7 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { WeekEntry, WeekEntryProps } from "../apps/WeekEntry"
+import { calculateDayTotal, WeekEntry, WeekEntryProps } from "../apps/WeekEntry"
 import { WeekEntryFetcher } from "../apps/WeekEntry/WeekEntryFetcher"
+import { FortyTime } from "forty-time"
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("week_entry_root")
@@ -11,9 +12,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = metaTag && metaTag.getAttribute("content")
   const fetcher = new WeekEntryFetcher(token)
 
+  const upgradedWorkDays = parsedProps.workWeek.workDays.map((workDay) => {
+    const {
+      adjustMinutes,
+      dayOfWeek,
+      id,
+      inMinutes,
+      outMinutes,
+      ptoMinutes,
+    } = workDay
+    const adjustTime = FortyTime.parse(adjustMinutes)
+    const inTime = FortyTime.parse(inMinutes)
+    const outTime = FortyTime.parse(outMinutes)
+    const ptoTime = FortyTime.parse(ptoMinutes)
+    const totalTime = calculateDayTotal(adjustTime, inTime, outTime, ptoTime)
+
+    return {
+      adjustTime,
+      dayOfWeek,
+      id,
+      inTime,
+      outTime,
+      ptoTime,
+      totalTime,
+    }
+  })
+
   const props: WeekEntryProps = {
     ...parsedProps,
     fetcher,
+    workWeek: {
+      ...parsedProps.workWeek,
+      workDays: upgradedWorkDays,
+    },
   }
 
   ReactDOM.render(<WeekEntry {...props} />, root)

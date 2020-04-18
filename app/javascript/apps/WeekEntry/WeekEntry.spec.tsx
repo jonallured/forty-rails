@@ -1,48 +1,42 @@
 import React from "react"
 import { mount } from "enzyme"
-import { WeekEntry, WeekEntryProps } from "./"
+import { WeekEntry, WeekEntryProps, WorkDay } from "./"
 import { WeekEntryFetcher } from "./WeekEntryFetcher"
+import { FortyTime } from "forty-time"
 
-const defaultWorkDays = [
+export const defaultDay = {
+  adjustTime: FortyTime.parse(0),
+  inTime: FortyTime.parse(540),
+  outTime: FortyTime.parse(1020),
+  ptoTime: FortyTime.parse(0),
+  totalTime: FortyTime.parse(0),
+}
+
+const defaultWorkDays: WorkDay[] = [
   {
-    adjustMinutes: 0,
+    ...defaultDay,
     dayOfWeek: "Monday",
     id: 1,
-    inMinutes: 540,
-    outMinutes: 1020,
-    ptoMinutes: 0,
   },
   {
-    adjustMinutes: 0,
+    ...defaultDay,
     dayOfWeek: "Tuesday",
     id: 2,
-    inMinutes: 540,
-    outMinutes: 1020,
-    ptoMinutes: 0,
   },
   {
-    adjustMinutes: 0,
+    ...defaultDay,
     dayOfWeek: "Wednesday",
     id: 3,
-    inMinutes: 540,
-    outMinutes: 1020,
-    ptoMinutes: 0,
   },
   {
-    adjustMinutes: 0,
+    ...defaultDay,
     dayOfWeek: "Thursday",
     id: 4,
-    inMinutes: 540,
-    outMinutes: 1020,
-    ptoMinutes: 0,
   },
   {
-    adjustMinutes: 0,
+    ...defaultDay,
     dayOfWeek: "Friday",
     id: 5,
-    inMinutes: 540,
-    outMinutes: 1020,
-    ptoMinutes: 0,
   },
 ]
 
@@ -50,9 +44,14 @@ const mockFetcher: WeekEntryFetcher = new WeekEntryFetcher("invalid")
 mockFetcher.updateWorkDay = jest.fn()
 
 const defaultProps: WeekEntryProps = {
-  dates: "Feb 17-21, 2020",
   fetcher: mockFetcher,
-  workWeek: { workDays: defaultWorkDays },
+  lastWeekPath: "",
+  nextWeekPath: "",
+  thisWeekPath: "",
+  workWeek: {
+    dateSpan: "Feb 17-21, 2020",
+    workDays: defaultWorkDays,
+  },
 }
 
 describe("WeekEntry", () => {
