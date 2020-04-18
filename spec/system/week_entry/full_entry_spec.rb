@@ -1,47 +1,42 @@
 require 'rails_helper'
 
-full_week_data = [
-  {
-    prefix: 'monday',
+full_week_data = {
+  'monday' => {
     in: '9:00',
     out: '17:00',
     pto: nil,
     adjust: nil,
     total: '8:00'
   },
-  {
-    prefix: 'tuesday',
+  'tuesday' => {
     in: nil,
     out: nil,
     pto: '8:00',
     adjust: nil,
     total: '8:00'
   },
-  {
-    prefix: 'wednesday',
+  'wednesday' => {
     in: '8:00',
     out: '17:00',
     pto: nil,
     adjust: nil,
     total: '9:00'
   },
-  {
-    prefix: 'thursday',
+  'thursday' => {
     in: '8:00',
     out: '17:00',
     pto: nil,
     adjust: '-1:00',
     total: '8:00'
   },
-  {
-    prefix: 'friday',
+  'friday' => {
     in: '11:00',
     out: '17:00',
     pto: '1:00',
     adjust: nil,
     total: '7:00'
   }
-]
+}
 
 describe 'Full week entry', js: true do
   it 'computes week total' do
@@ -50,14 +45,18 @@ describe 'Full week entry', js: true do
 
     visit '/today'
 
-    full_week_data.each do |day|
-      fill_in "#{day[:prefix]}_in", with: day[:in] if day[:in]
-      fill_in "#{day[:prefix]}_out", with: day[:out] if day[:out]
-      fill_in "#{day[:prefix]}_pto", with: day[:pto] if day[:pto]
-      fill_in "#{day[:prefix]}_adjust", with: day[:adjust] if day[:adjust]
+    WorkDay.all.each do |work_day|
+      day_of_week = work_day.date.strftime('%A').downcase
+      data = full_week_data[day_of_week]
+      prefix = work_day.id
 
-      day_total = page.find(".#{day[:prefix]}_total")
-      expect(day_total.text).to eq day[:total]
+      fill_in "#{prefix}.inTime", with: data[:in] if data[:in]
+      fill_in "#{prefix}.outTime", with: data[:out] if data[:out]
+      fill_in "#{prefix}.ptoTime", with: data[:pto] if data[:pto]
+      fill_in "#{prefix}.adjustTime", with: data[:adjust] if data[:adjust]
+
+      day_total = page.find(".total_#{prefix}")
+      expect(day_total.text).to eq data[:total]
     end
 
     # expect(page).to have_css('.grand_total', text: '40:00')
