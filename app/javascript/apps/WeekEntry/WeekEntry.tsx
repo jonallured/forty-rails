@@ -26,6 +26,8 @@ export interface WorkDay {
 
 export interface WorkWeek {
   dateSpan: string
+  grandTotal: string
+  pace: string
   workDays: WorkDay[]
 }
 
@@ -62,6 +64,13 @@ const recalculate = (id, key, value, workWeek): WorkWeek => {
   )
   workDay.totalTime = updatedTotalTime
 
+  const grandTotalMinutes = updatedWorkWeek.workDays
+    .map((w) => w.totalTime.minutes)
+    .reduce((a, b) => a + b)
+  const grandTotal = FortyTime.parse(grandTotalMinutes)
+  updatedWorkWeek.grandTotal = grandTotal
+  updatedWorkWeek.pace = "even"
+
   return updatedWorkWeek
 }
 
@@ -91,10 +100,10 @@ export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
   return (
     <>
       <Header
-        dateSpan={workWeek.dateSpan}
         lastWeekPath={lastWeekPath}
         nextWeekPath={nextWeekPath}
         thisWeekPath={thisWeekPath}
+        workWeek={workWeek}
       />
       <div className="table">{weekColumns}</div>
     </>
