@@ -59,7 +59,7 @@ describe 'Full week entry', js: true do
       expect(day_total.text).to eq data[:total]
     end
 
-    # expect(page).to have_css('.grand_total', text: '40:00')
-    # expect(page).to have_css('.pace', text: 'even')
+    expect(page).to have_css('.grand_total', text: '40:00')
+    expect(page).to have_css('.pace', text: 'even')
   end
 end

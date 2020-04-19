@@ -38,11 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
+  const grandTotalMinutes = upgradedWorkDays
+    .map((w) => w.totalTime.minutes)
+    .reduce((a, b) => a + b)
+  const grandTotal = FortyTime.parse(grandTotalMinutes)
+  const pace = "even"
+
   const props: WeekEntryProps = {
     ...parsedProps,
     fetcher,
     workWeek: {
       ...parsedProps.workWeek,
+      grandTotal,
+      pace,
       workDays: upgradedWorkDays,
     },
   }
