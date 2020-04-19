@@ -59,26 +59,42 @@ body
       #week_entry_root
         nav
           display: flex
-          flex-direction: column
-          justify-content: center
-          text-align: right
+          justify-content: space-between
           padding-bottom: 30px
 
-          p
-            font-size: 20px
-          a
-            color: $off-black
-            background: $middle-gray
-            font-size: 16px
-            margin-left: 20px
-            padding: 4px 20px
-            text-decoration: none
-            transition: background-color $transition-config
-            transition: color $transition-config
+          .left
+            h1
+              color: $bright-green
+              font-family: $prompt
+              font-size: 80px
+              font-weight: 900
+              margin: 0
+              padding: 0
+            h1, p
+              display: inline
+          .right
+            display: flex
+            flex-direction: column
+            justify-content: center
+            text-align: right
 
-            &:hover, &:focus
-              background: $off-black
-              color: $bright-white
+            p
+              font-size: 20px
+              margin: 0 0 10px
+              padding: 0
+            a
+              color: $off-black
+              background: $middle-gray
+              font-size: 16px
+              margin-left: 20px
+              padding: 4px 20px
+              text-decoration: none
+              transition: background-color $transition-config
+              transition: color $transition-config
+
+              &:hover, &:focus
+                background: $off-black
+                color: $bright-white
 
         .table
           display: flex
