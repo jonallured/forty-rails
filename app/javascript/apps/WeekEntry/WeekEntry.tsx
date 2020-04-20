@@ -3,16 +3,7 @@ import { WeekColumn } from "./components/WeekColumn"
 import { Header } from "./components/Header"
 import { WeekEntryFetcher } from "./WeekEntryFetcher"
 import { FortyTime } from "forty-time"
-
-export const calculateDayTotal = (
-  adjustTime,
-  inTime,
-  outTime,
-  ptoTime
-): FortyTime => {
-  const totalTime = outTime.minus(inTime).plus(ptoTime).plus(adjustTime)
-  return totalTime
-}
+import { recalculate } from "./helpers"
 
 export interface WorkDay {
   adjustTime: FortyTime
@@ -26,7 +17,7 @@ export interface WorkDay {
 
 export interface WorkWeek {
   dateSpan: string
-  grandTotal: string
+  grandTotal: FortyTime
   pace: string
   workDays: WorkDay[]
 }
@@ -44,34 +35,6 @@ const keyToAttributeMap = {
   inTime: "in_minutes",
   outTime: "out_minutes",
   ptoTime: "pto_minutes",
-}
-
-const recalculate = (id, key, value, workWeek): WorkWeek => {
-  const updatedWorkWeek = {
-    ...workWeek,
-  }
-
-  const workDay = updatedWorkWeek.workDays.find((w) => w.id.toString() === id)
-  workDay[key] = FortyTime.parse(value)
-
-  const { adjustTime, inTime, outTime, ptoTime } = workDay
-
-  const updatedTotalTime = calculateDayTotal(
-    adjustTime,
-    inTime,
-    outTime,
-    ptoTime
-  )
-  workDay.totalTime = updatedTotalTime
-
-  const grandTotalMinutes = updatedWorkWeek.workDays
-    .map((w) => w.totalTime.minutes)
-    .reduce((a, b) => a + b)
-  const grandTotal = FortyTime.parse(grandTotalMinutes)
-  updatedWorkWeek.grandTotal = grandTotal
-  updatedWorkWeek.pace = "even"
-
-  return updatedWorkWeek
 }
 
 export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
