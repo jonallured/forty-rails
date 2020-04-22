@@ -59,7 +59,7 @@ export const calculate = (workWeek: WorkWeek): WorkWeek => {
 }
 
 export const recalculate = (id, key, value, workWeek): WorkWeek => {
-  const workDay = workWeek.workDays.find((w) => w.id.toString() === id)
+  const workDay = workWeek.workDays.find((w) => w.id === id)
   workDay[key] = FortyTime.parse(value)
   const updatedWorkWeek = calculate(workWeek)
   return updatedWorkWeek
