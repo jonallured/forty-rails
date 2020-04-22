@@ -1,6 +1,6 @@
 import React from "react"
 import { WorkDay } from "../../WeekEntry"
-import { FortyTime } from "forty-time"
+import { TimeInput } from "../TimeInput"
 
 export interface WeekColumnProps {
   handleWorkDayUpdate: (id, key, value) => void
@@ -10,48 +10,42 @@ export interface WeekColumnProps {
 export const WeekColumn: React.FC<WeekColumnProps> = (props) => {
   const { workDay } = props
   const shortDay = workDay.dayOfWeek.substring(0, 3)
-  const prefix = workDay.id
 
-  const handleChange = (e): void => {
-    const { name, value } = e.target
-    const [id, key] = name.split(".")
-    const minutes = FortyTime.parse(value).minutes
-
-    props.handleWorkDayUpdate(id, key, minutes)
+  const defaultInputProps = {
+    handleWorkDayUpdate: props.handleWorkDayUpdate,
+    id: workDay.id,
   }
 
   return (
     <section>
       <p>{shortDay}</p>
-      <input
-        defaultValue={workDay.inTime.toString()}
-        name={`${prefix}.inTime`}
-        onChange={handleChange}
+      <TimeInput
+        {...defaultInputProps}
         placeholder="in"
-        type="text"
+        property="inTime"
+        time={workDay.inTime}
       />
-      <input
-        defaultValue={workDay.outTime.toString()}
-        name={`${prefix}.outTime`}
-        onChange={handleChange}
+      <TimeInput
+        {...defaultInputProps}
         placeholder="out"
-        type="text"
+        property="outTime"
+        time={workDay.outTime}
       />
-      <input
-        defaultValue={workDay.ptoTime.toString()}
-        name={`${prefix}.ptoTime`}
-        onChange={handleChange}
+      <TimeInput
+        {...defaultInputProps}
         placeholder="pto"
-        type="text"
+        property="ptoTime"
+        time={workDay.ptoTime}
       />
-      <input
-        defaultValue={workDay.adjustTime.toString()}
-        name={`${prefix}.adjustTime`}
-        onChange={handleChange}
+      <TimeInput
+        {...defaultInputProps}
         placeholder="adjust"
-        type="text"
+        property="adjustTime"
+        time={workDay.adjustTime}
       />
-      <p className={`total_${prefix} total`}>{workDay.totalTime.toString()}</p>
+      <p className={`total_${workDay.id} total`}>
+        {workDay.totalTime.toString()}
+      </p>
     </section>
   )
 }
