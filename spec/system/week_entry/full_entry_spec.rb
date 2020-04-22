@@ -48,14 +48,14 @@ describe 'Full week entry', js: true do
     WorkDay.all.each do |work_day|
       day_of_week = work_day.date.strftime('%A').downcase
       data = full_week_data[day_of_week]
-      prefix = work_day.id
+      id = work_day.id
 
-      fill_in "#{prefix}.inTime", with: data[:in] if data[:in]
-      fill_in "#{prefix}.outTime", with: data[:out] if data[:out]
-      fill_in "#{prefix}.ptoTime", with: data[:pto] if data[:pto]
-      fill_in "#{prefix}.adjustTime", with: data[:adjust] if data[:adjust]
+      fill_in "#{id}.inTime", with: "#{data[:in]}\n" if data[:in]
+      fill_in "#{id}.outTime", with: "#{data[:out]}\n" if data[:out]
+      fill_in "#{id}.ptoTime", with: "#{data[:pto]}\n" if data[:pto]
+      fill_in "#{id}.adjustTime", with: "#{data[:adjust]}\n" if data[:adjust]
 
-      day_total = page.find(".total_#{prefix}")
+      day_total = page.find(".total_#{id}")
       expect(day_total.text).to eq data[:total]
     end
 
