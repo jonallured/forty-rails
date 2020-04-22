@@ -20,6 +20,10 @@ export const calculateWorkDays = (workDays: WorkDay[]): WorkDay[] => {
     const { adjustTime, inTime, outTime, ptoTime } = workDay
     const totalTime = outTime.minus(inTime).plus(ptoTime).plus(adjustTime)
 
+    if (totalTime.minutes < 0) {
+      totalTime.minutes = 0
+    }
+
     return {
       ...workDay,
       totalTime,
