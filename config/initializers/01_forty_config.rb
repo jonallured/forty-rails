@@ -11,10 +11,10 @@ module Forty
 
   private_class_method def self.load_config
     credentials = Rails.application.credentials
-    name = ENV['CREDS_GROUP'].to_sym
+    name = ENV.fetch('CREDS_GROUP', 'invalid').to_sym
     group = credentials[name]
 
-    raise 'CREDS_GROUP not found' unless group
+    raise "CREDS_GROUP '#{name}' not found" unless group
 
     {
       stripe_api_key: group[:stripe_api_key]
