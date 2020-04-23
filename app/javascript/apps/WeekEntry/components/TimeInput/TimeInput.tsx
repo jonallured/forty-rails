@@ -3,11 +3,6 @@ import { FortyTime } from "forty-time"
 
 const pattern = /^[-0-9:]*$/
 
-const EnterKeyCode = 13
-const EscKeyCode = 27
-
-const CommitKeyCodes = [EnterKeyCode, EscKeyCode]
-
 export interface TimeInputProps {
   handleWorkDayUpdate: (id, key, value) => void
   id: number
@@ -38,7 +33,7 @@ export const TimeInput: React.FC<TimeInputProps> = (props) => {
   }
 
   const handleKeyUp = (e): void => {
-    if (CommitKeyCodes.includes(e.keyCode)) {
+    if (e.keyCode === 13 || e.keyCode === 27) {
       e.target.blur()
       e.target.select()
     }
