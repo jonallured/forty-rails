@@ -1,6 +1,5 @@
 {
   "presets": [
-    "@babel/preset-typescript",
     "@babel/preset-react",
     [
       "@babel/preset-env",
@@ -10,6 +9,13 @@
         "targets": {
           "browsers": "> 1%"
         }
+      }
+    ],
+    [
+      "@babel/preset-typescript",
+      {
+        "allExtensions": true,
+        "isTSX": true
       }
     ]
   ],
