@@ -29,6 +29,19 @@ body
   a
     color: $off-black
 
+    &.button
+      color: $off-black
+      background: $middle-gray
+      font-size: 16px
+      padding: 4px 20px
+      text-decoration: none
+      transition: background-color $transition-config
+      transition: color $transition-config
+      &:hover, &:focus
+        background: $off-black
+        color: $bright-white
+
+
   .wrapper
     background-color: $bright-white
     margin: 0 auto
@@ -56,6 +69,10 @@ body
             background-color: $light-green
 
     main
+      #account
+        .button
+          float: right
+
       #pto
         display: flex
         justify-content: space-between
