@@ -21,7 +21,7 @@ export const TimeInput: React.FC<TimeInputProps> = (props) => {
   const handleBlur = (e): void => {
     const newTime = FortyTime.parse(e.target.value)
     setValue(newTime.toString())
-    handleWorkDayUpdate(id, property, newTime.minutes)
+    handleWorkDayUpdate(id, property, newTime.value)
   }
 
   const handleChange = (e): void => {
