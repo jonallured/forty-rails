@@ -18,11 +18,9 @@ export const convertToTimes = (workDays): WorkDay[] => {
 export const calculateWorkDays = (workDays: WorkDay[]): WorkDay[] => {
   return workDays.map((workDay) => {
     const { adjustTime, inTime, outTime, ptoTime } = workDay
-    const totalTime = outTime.minus(inTime).plus(ptoTime).plus(adjustTime)
-
-    if (totalTime.minutes < 0) {
-      totalTime.minutes = 0
-    }
+    const total = outTime.minus(inTime).plus(ptoTime).plus(adjustTime)
+    const totalMinutes = Math.max(0, total.minutes)
+    const totalTime = FortyTime.parse(totalMinutes)
 
     return {
       ...workDay,
