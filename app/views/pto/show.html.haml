@@ -1,9 +1,9 @@
 #pto
   %nav
     .top
-      = link_to "<", pto_report_path(pto_report.prev_year)
+      = link_to "<", pto_report_path(pto_report.prev_year), class: "button"
       %p= pto_report.year
-      = link_to ">", pto_report_path(pto_report.next_year)
+      = link_to ">", pto_report_path(pto_report.next_year), class: "button"
     .totals
       %div
         %h1= pto_report.ytd_total

@@ -29,18 +29,35 @@ body
   a
     color: $off-black
 
-    &.button
-      color: $off-black
-      background: $middle-gray
-      font-size: 16px
-      padding: 4px 20px
-      text-decoration: none
-      transition: background-color $transition-config
-      transition: color $transition-config
-      &:hover, &:focus
-        background: $off-black
-        color: $bright-white
+  a.button, input[type='submit']
+    color: $off-black
+    background-color: $middle-gray
+    font-size: 16px
+    padding: 4px 20px
+    text-decoration: none
+    transition: background-color $transition-config
+    transition: color $transition-config
+    &:hover,&:active
+      background-color: $off-black
+      color: $bright-white
 
+  input[type='submit']
+    border: none
+    cursor: pointer
+    font-family: $open-sans
+
+  input[type='text'],input[type='password'], input[type='email']
+    border-width: 0 0 4px
+    border-style: solid
+    border-color: $middle-gray
+    font-family: $open-sans
+    font-size: 20px
+    padding: 6px 0
+    transition: border-color $transition-config
+    &:hover, &:focus
+      border-color: $off-black
+    &::placeholder
+      color: $middle-gray
 
   .wrapper
     background-color: $bright-white
@@ -69,6 +86,27 @@ body
             background-color: $light-green
 
     main
+      #devise
+        margin: 0 auto
+        width: 300px
+        h2
+          font-family: $prompt
+          font-weight: 700
+          font-size: 30px
+        form
+          .field
+            margin-bottom: 20px
+            input[type='email'], input[type='password']
+              width: 100%
+          .actions
+            margin-bottom: 20px
+            text-align: center
+            input
+              font-size: 22px
+        .links
+          display: flex
+          justify-content: space-between
+
       #account
         .button
           float: right
@@ -88,17 +126,6 @@ body
               font-family: $open-sans
               font-size: 20px
               margin: 0 20px
-            a
-              color: $off-black
-              background: $middle-gray
-              font-size: 16px
-              padding: 4px 20px
-              text-decoration: none
-              transition: background-color $transition-config
-              transition: color $transition-config
-              &:hover, &:focus
-                background: $off-black
-                color: $bright-white
           .totals
             h1
               color: $bright-green
@@ -159,18 +186,7 @@ body
               margin: 0 0 10px
               padding: 0
             a
-              color: $off-black
-              background: $middle-gray
-              font-size: 16px
               margin-left: 20px
-              padding: 4px 20px
-              text-decoration: none
-              transition: background-color $transition-config
-              transition: color $transition-config
-
-              &:hover, &:focus
-                background: $off-black
-                color: $bright-white
 
         .table
           display: flex

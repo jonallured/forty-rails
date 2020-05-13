@@ -16,29 +16,35 @@ export const WeekColumn: React.FC<WeekColumnProps> = (props) => {
     id: workDay.id,
   }
 
+  const shouldFocus = shortDay === "Mon"
+
   return (
     <section>
       <p>{shortDay}</p>
       <TimeInput
         {...defaultInputProps}
+        autoFocus={shouldFocus}
         placeholder="in"
         property="inTime"
         time={workDay.inTime}
       />
       <TimeInput
         {...defaultInputProps}
+        autoFocus={false}
         placeholder="out"
         property="outTime"
         time={workDay.outTime}
       />
       <TimeInput
         {...defaultInputProps}
+        autoFocus={false}
         placeholder="pto"
         property="ptoTime"
         time={workDay.ptoTime}
       />
       <TimeInput
         {...defaultInputProps}
+        autoFocus={false}
         placeholder="adjust"
         property="adjustTime"
         time={workDay.adjustTime}

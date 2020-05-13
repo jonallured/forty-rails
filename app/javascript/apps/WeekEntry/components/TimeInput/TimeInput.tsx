@@ -4,6 +4,7 @@ import { FortyTime } from "forty-time"
 const pattern = /^[-0-9:]*$/
 
 export interface TimeInputProps {
+  autoFocus: boolean
   handleWorkDayUpdate: (id, key, value) => void
   id: number
   placeholder: string
@@ -12,7 +13,14 @@ export interface TimeInputProps {
 }
 
 export const TimeInput: React.FC<TimeInputProps> = (props) => {
-  const { handleWorkDayUpdate, id, placeholder, property, time } = props
+  const {
+    autoFocus,
+    handleWorkDayUpdate,
+    id,
+    placeholder,
+    property,
+    time,
+  } = props
 
   const [value, setValue] = useState(time.toString())
 
@@ -41,6 +49,7 @@ export const TimeInput: React.FC<TimeInputProps> = (props) => {
 
   return (
     <input
+      autoFocus={autoFocus}
       name={name}
       onBlur={handleBlur}
       onChange={handleChange}

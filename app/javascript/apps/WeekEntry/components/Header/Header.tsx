@@ -21,9 +21,15 @@ export const Header: React.FC<HeaderProps> = (props) => {
       <div className="right">
         <p>{dateSpan}</p>
         <div>
-          <a href={lastWeekPath}>&lt;</a>
-          <a href={thisWeekPath}>this week</a>
-          <a href={nextWeekPath}>&gt;</a>
+          <a className="button" href={lastWeekPath}>
+            &lt;
+          </a>
+          <a className="button" href={thisWeekPath}>
+            this week
+          </a>
+          <a className="button" href={nextWeekPath}>
+            &gt;
+          </a>
         </div>
       </div>
     </nav>
