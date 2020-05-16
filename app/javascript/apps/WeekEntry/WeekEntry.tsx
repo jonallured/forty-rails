@@ -19,6 +19,7 @@ export interface WorkWeek {
   dateSpan: string
   grandTotal: FortyTime
   pace: string
+  weekToDateIds: number[]
   workDays: WorkDay[]
 }
 
