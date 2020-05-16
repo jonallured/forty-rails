@@ -29,28 +29,49 @@ export const calculateWorkDays = (workDays: WorkDay[]): WorkDay[] => {
   })
 }
 
-export const calculateGrandTotal = (workDays: WorkDay[]): FortyTime => {
+export const calculateTotal = (workDays: WorkDay[]): FortyTime => {
   const totalMinutes = workDays
     .map((w) => w.totalTime.minutes)
-    .reduce((a, b) => a + b)
+    .reduce((a, b) => a + b, 0)
   return FortyTime.parse(totalMinutes)
 }
 
-export const calculatePace = (
-  grandTotal: FortyTime,
-  target: FortyTime
-): string => {
-  const difference = grandTotal.minus(target)
+export const calculatePace = (total: FortyTime, target: FortyTime): string => {
+  const difference = total.minus(target)
   if (difference.minutes === 0) return "even"
 
   return difference.toString()
 }
 
+interface WeekToDate {
+  target: FortyTime
+  total: FortyTime
+}
+
+const calculateWeekToDate = (
+  workDays: WorkDay[],
+  weekToDateIds: number[]
+): WeekToDate => {
+  const targetMinutes = weekToDateIds.length * 8 * 60
+  const target = FortyTime.parse(targetMinutes)
+
+  const weekToDateDays = workDays.filter((day) => {
+    return weekToDateIds.includes(day.id)
+  })
+
+  const total = calculateTotal(weekToDateDays)
+
+  return {
+    target,
+    total,
+  }
+}
+
 export const calculate = (workWeek: WorkWeek): WorkWeek => {
   const workDays = calculateWorkDays(workWeek.workDays)
-  const grandTotal = calculateGrandTotal(workDays)
-  const target = FortyTime.parse("40:00")
-  const pace = calculatePace(grandTotal, target)
+  const grandTotal = calculateTotal(workDays)
+  const weekToDate = calculateWeekToDate(workDays, workWeek.weekToDateIds)
+  const pace = calculatePace(weekToDate.total, weekToDate.target)
 
   return {
     ...workWeek,

@@ -27,6 +27,7 @@ class WorkWeek
   def as_json(_)
     {
       dateSpan: date_span,
+      weekToDateIds: week_to_date_ids,
       workDays: @work_days
     }
   end
@@ -36,6 +37,11 @@ class WorkWeek
   end
 
   private
+
+  def week_to_date_ids
+    days = @work_days.select { |day| day.date <= Time.zone.today }
+    days.map(&:id)
+  end
 
   def date_span
     monday = dates.first
