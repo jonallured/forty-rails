@@ -6,7 +6,7 @@ describe 'User signs in' do
     visit '/'
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
-    click_button 'Log in'
+    click_button 'sign in'
     expect(current_path).to match 'work_weeks'
   end
 end
