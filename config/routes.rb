@@ -35,5 +35,8 @@ Rails.application.routes.draw do
 
   get :account, to: 'account#show'
 
+  get :upgrade, to: 'upgrade#show'
+  post :upgrade, to: 'upgrade#create'
+
   root to: redirect('/today')
 end
