@@ -17,8 +17,8 @@ module Forty
     raise "CREDS_GROUP '#{name}' not found" unless group
 
     {
+      stripe_plan_id: group.dig(:stripe, :plan_id),
       stripe_private_key: group.dig(:stripe, :private_key),
-      stripe_product_id: group.dig(:stripe, :product_id),
       stripe_public_key: group.dig(:stripe, :public_key)
     }
   end
