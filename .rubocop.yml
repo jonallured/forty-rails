@@ -20,6 +20,8 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 Lint/RaiseException:
@@ -33,4 +35,6 @@ Style/HashEachMethods:
 Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
+  Enabled: true
+Style/SlicingWithRange:
   Enabled: true
