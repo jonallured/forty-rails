@@ -1,2 +1,2 @@
-class AccountController < ApplicationController
+class AccountController < AuthenticatedController
 end
