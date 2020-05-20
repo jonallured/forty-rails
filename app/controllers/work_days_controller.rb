@@ -1,6 +1,4 @@
-class WorkDaysController < ApplicationController
-  before_action :authenticate_user!
-
+class WorkDaysController < AuthenticatedController
   expose(:work_day, scope: -> { current_user.work_days })
 
   def update

@@ -1,4 +1,4 @@
-class PtoController < ApplicationController
+class PtoController < AuthenticatedController
   expose(:pto_report) { PtoReport.generate_for(current_user, params[:year]) }
 
   def index
