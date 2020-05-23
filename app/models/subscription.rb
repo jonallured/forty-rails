@@ -5,4 +5,6 @@ class Subscription < ApplicationRecord
     today = Time.zone.today
     where('starts_on >= ? AND ends_on >= ?', today, today)
   }
+
+  scope :comped, -> { where(comped: true) }
 end
