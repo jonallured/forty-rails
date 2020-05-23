@@ -7,3 +7,4 @@ staging_url=$(heroku config:get DATABASE_URL --remote staging)
 heroku pg:pull DATABASE_URL $staging_url --remote production
 dropdb forty_development
 heroku pg:pull DATABASE_URL forty_development --remote staging
+bundle exec rake db:environment:set RAILS_ENV=development
