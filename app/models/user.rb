@@ -8,4 +8,8 @@ class User < ApplicationRecord
   def active?
     subscriptions.active.any?
   end
+
+  def comped?
+    subscriptions.comped.any?
+  end
 end
