@@ -17,6 +17,8 @@ module Forty
     raise "CREDS_GROUP '#{name}' not found" unless group
 
     {
+      admin_email: group[:admin_email],
+
       smtp_address: group.dig(:smtp, :address),
       smtp_authentication: group.dig(:smtp, :authentication),
       smtp_domain: group.dig(:smtp, :domain),
