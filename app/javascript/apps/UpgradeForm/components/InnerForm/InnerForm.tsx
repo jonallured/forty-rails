@@ -17,9 +17,7 @@ export const InnerForm: React.FC<InnerFormProps> = (props) => {
       console.log(result.error)
     } else {
       fetcher.createUpgrade(result.source.id).then(() => {
-        // this would probably be better - send them to a page thanking them
-        // and then they can use the app from there.
-        window.location.assign("/upgrade/thanks")
+        window.location.assign("/thanks")
       })
     }
   }
