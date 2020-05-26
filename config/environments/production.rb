@@ -24,13 +24,4 @@ Rails.application.configure do
   end
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: Forty.config.smtp_address,
-    authentication: Forty.config.smtp_authentication,
-    domain: Forty.config.smtp_domain,
-    enable_starttls_auto: true,
-    password: Forty.config.smtp_password,
-    port: Forty.config.smtp_port,
-    user_name: Forty.config.smtp_user_name
-  }
 end

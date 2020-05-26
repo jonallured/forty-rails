@@ -29,4 +29,5 @@ Rails.application.configure do
   config.middleware.insert_after(
     ActionDispatch::Static, Rack::LiveReload, live_reload_port: 4042
   )
+  config.action_mailer.delivery_method = :smtp
 end
