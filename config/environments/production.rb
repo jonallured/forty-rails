@@ -1,5 +1,6 @@
 Rails.application.configure do
   config.action_controller.perform_caching = true
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
   config.active_record.dump_schema_after_migration = false
   config.active_storage.service = :local
@@ -22,6 +23,4 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
-
-  config.action_mailer.delivery_method = :smtp
 end
