@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
   config.action_mailer.raise_delivery_errors = false
   config.active_record.migration_error = :page_load
@@ -29,5 +30,4 @@ Rails.application.configure do
   config.middleware.insert_after(
     ActionDispatch::Static, Rack::LiveReload, live_reload_port: 4042
   )
-  config.action_mailer.delivery_method = :smtp
 end
