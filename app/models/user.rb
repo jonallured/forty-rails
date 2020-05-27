@@ -18,6 +18,6 @@ class User < ApplicationRecord
   private
 
   def notify_admin
-    AdminMailer.with(user_id: id).new_user_email.deliver
+    AdminMailer.with(user_id: id).new_user_email.deliver_later
   end
 end
