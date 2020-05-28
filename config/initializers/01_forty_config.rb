@@ -9,13 +9,17 @@ module Forty
     Struct::Config.new(attributes)
   end
 
-  private_class_method def self.load_config # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  private_class_method def self.load_config
     credentials = Rails.application.credentials
     name = ENV.fetch('CREDS_GROUP', 'invalid').to_sym
     group = credentials[name]
 
     raise "CREDS_GROUP '#{name}' not found" unless group
 
+    map_config(group)
+  end
+
+  private_class_method def self.map_config(group) # rubocop:disable Metrics/MethodLength
     {
       admin_email: group[:admin_email],
 
