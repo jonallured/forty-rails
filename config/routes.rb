@@ -1,23 +1,7 @@
 require 'sidekiq/web'
 
-path_names = {
-  confirmation: 'confirm',
-  password: 'password',
-  registration: 'registration',
-  sign_in: 'sign-in',
-  sign_out: 'sign-out',
-  sign_up: 'sign-up'
-}
-
-devise_options = {
-  controllers: { registrations: 'users/registrations' },
-  path: '',
-  path_names: path_names,
-  sign_out_via: :get
-}
-
 Rails.application.routes.draw do
-  devise_for :users, devise_options
+  devise_for :users, DeviseUser.route_options
 
   devise_scope :user do
     get 'forgot', to: 'devise/passwords#new', as: :forgot
