@@ -16,3 +16,24 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
   config.strip_whitespace_keys = [:email]
 end
+
+module DeviseUser
+  def self.path_names
+    {
+      confirmation: 'confirm',
+      password: 'password',
+      registration: 'registration',
+      sign_in: 'sign-in',
+      sign_out: 'sign-out',
+      sign_up: 'sign-up'
+    }
+  end
+
+  def self.route_options
+    {
+      path: '',
+      path_names: path_names,
+      sign_out_via: :get
+    }
+  end
+end
