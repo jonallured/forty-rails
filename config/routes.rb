@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 path_names = {
   confirmation: 'confirm',
   password: 'password',
@@ -38,6 +40,9 @@ Rails.application.routes.draw do
   get :upgrade, to: 'upgrade#show'
   post :upgrade, to: 'upgrade#create'
   get :thanks, to: 'thanks#show'
+
+  Sidekiq::Web.use(Rack::Auth::Basic, &SidekiqCreds.checker)
+  mount Sidekiq::Web, at: '/sidekiq'
 
   root to: redirect('/today')
 end

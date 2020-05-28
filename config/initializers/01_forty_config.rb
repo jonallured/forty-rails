@@ -23,6 +23,9 @@ module Forty
     {
       admin_email: group[:admin_email],
 
+      sidekiq_admin_username: group.dig(:sidekiq_admin, :username),
+      sidekiq_admin_password: group.dig(:sidekiq_admin, :password),
+
       smtp_address: group.dig(:smtp, :address),
       smtp_authentication: group.dig(:smtp, :authentication),
       smtp_domain: group.dig(:smtp, :domain),
