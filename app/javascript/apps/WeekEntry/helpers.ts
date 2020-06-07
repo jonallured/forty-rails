@@ -1,7 +1,16 @@
 import { FortyTime } from "forty-time"
 import { WorkDay, WorkWeek } from "./"
 
-export const convertToTimes = (workDays): WorkDay[] => {
+interface RawWorkDay {
+  adjustMinutes: number
+  dayOfWeek: string
+  id: number
+  inMinutes: number
+  outMinutes: number
+  ptoMinutes: number
+}
+
+export const convertToTimes = (workDays: RawWorkDay[]): WorkDay[] => {
   return workDays.map((workDay) => {
     return {
       adjustTime: FortyTime.parse(workDay.adjustMinutes),
@@ -81,7 +90,12 @@ export const calculate = (workWeek: WorkWeek): WorkWeek => {
   }
 }
 
-export const recalculate = (id, key, value, workWeek): WorkWeek => {
+export const recalculate = (
+  id: number,
+  key: string,
+  value: number,
+  workWeek: WorkWeek
+): WorkWeek => {
   const workDay = workWeek.workDays.find((w) => w.id === id)
   workDay[key] = FortyTime.parse(value)
   const updatedWorkWeek = calculate(workWeek)

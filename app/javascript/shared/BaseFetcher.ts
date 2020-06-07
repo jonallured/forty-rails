@@ -1,5 +1,5 @@
-export type RequestBody = object | object[]
-export type ResponseJson = Promise<object | object[]>
+export type RequestBody = object | object[] // eslint-disable-line @typescript-eslint/ban-types
+export type ResponseJson = Promise<object | object[]> // eslint-disable-line @typescript-eslint/ban-types
 
 const jsonContentType = "application/json"
 
