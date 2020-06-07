@@ -5,7 +5,7 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.expire_all_remember_me_on_sign_out = true
   config.extend_remember_period = true
-  config.mailer_sender = 'change-me@example.com'
+  config.mailer_sender = 'no-reply@fortyeven.com'
   config.password_length = 18..128
   config.remember_for = 2.weeks
   config.reset_password_within = 6.hours
