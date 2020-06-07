@@ -2,12 +2,13 @@
   = link_to 'sign out', sign_out_path, class: 'button'
   %p Signed in as #{current_user.email}
 
-  - if current_user.comped?
-    %p You are comped! :heart_eyes:
-  - elsif current_user.active?
-    %p Thanks for paying me money!!
-  - else
-    %p
-      Please
-      = link_to 'upgrade', upgrade_path
-      your account!
+  - if Feature.enabled?(Feature::UPGRADE)
+    - if current_user.comped?
+      %p You are comped! :heart_eyes:
+    - elsif current_user.active?
+      %p Thanks for paying me money!!
+    - else
+      %p
+        Please
+        = link_to 'upgrade', upgrade_path
+        your account!
