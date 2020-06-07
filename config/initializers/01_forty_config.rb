@@ -23,6 +23,8 @@ module Forty
     {
       admin_email: group[:admin_email],
 
+      features: features,
+
       sidekiq_admin_username: group.dig(:sidekiq_admin, :username),
       sidekiq_admin_password: group.dig(:sidekiq_admin, :password),
 
@@ -37,6 +39,12 @@ module Forty
       stripe_private_key: group.dig(:stripe, :private_key),
       stripe_public_key: group.dig(:stripe, :public_key)
     }
+  end
+
+  private_class_method def self.features
+    Feature::FLAGS.index_with do |feature|
+      ENV.fetch(feature, 'false') == 'true'
+    end
   end
 end
 
