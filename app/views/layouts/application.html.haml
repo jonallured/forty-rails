@@ -18,5 +18,12 @@
           %a(href="/today") today
           %a(href="/pto") pto
           %a(href="/account") account
-      %main= yield
+      %main
+        - if flash.any?
+          %aside.flash
+            %ul
+              - flash.each do |type, message|
+                %li{class: type}= message
+
+        = yield
       %footer

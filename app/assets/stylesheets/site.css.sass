@@ -4,6 +4,10 @@ $light-green: #e4ffed
 $middle-green: #afffca
 $bright-green: #29ff71
 
+$bright-blue: #294cff
+$bright-pink: #ff29b7
+$bright-yellow: #ffdc29
+
 $light-gray: #e0e3e1
 $middle-gray: #829087
 $off-black: #05200e
@@ -86,6 +90,29 @@ body
             background-color: $light-green
 
     main
+      aside.flash
+        margin-top: 20px
+        ul
+          margin: 0
+          padding: 0
+          list-style-type: none
+          li
+            margin-top: 10px
+            padding: 10px
+            text-align: center
+            &.success
+              background-color: $bright-green
+              color: $off-black
+            &.notice
+              background-color: $bright-blue
+              color: $bright-white
+            &.alert
+              background-color: $bright-yellow
+              color: $off-black
+            &.error
+              background-color: $bright-pink
+              color: $bright-white
+
       #devise
         margin: 0 auto
         width: 300px
