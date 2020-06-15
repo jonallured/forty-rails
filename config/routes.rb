@@ -10,6 +10,7 @@ path_names = {
 }
 
 devise_options = {
+  controllers: { registrations: 'users/registrations' },
   path: '',
   path_names: path_names,
   sign_out_via: :get
