@@ -7,6 +7,7 @@ Devise.setup do |config|
   config.extend_remember_period = true
   config.mailer_sender = 'no-reply@fortyeven.com'
   config.password_length = 18..128
+  config.reconfirmable = true
   config.remember_for = 2.weeks
   config.reset_password_within = 6.hours
   config.sign_in_after_reset_password = false
