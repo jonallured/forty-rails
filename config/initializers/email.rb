@@ -1,3 +1,5 @@
+ActionMailer::Base.default_url_options = { host: Forty.config.email_host } if Rails.env.production?
+
 ActionMailer::Base.smtp_settings = {
   address: Forty.config.smtp_address,
   authentication: Forty.config.smtp_authentication,
