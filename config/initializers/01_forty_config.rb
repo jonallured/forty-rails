@@ -22,6 +22,7 @@ module Forty
   private_class_method def self.map_config(group) # rubocop:disable Metrics/MethodLength
     {
       admin_email: group[:admin_email],
+      email_host: group[:email_host],
 
       features: features,
 
