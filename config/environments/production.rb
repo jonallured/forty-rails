@@ -1,5 +1,6 @@
 Rails.application.configure do
   config.action_controller.perform_caching = true
+  config.action_mailer.default_url_options = { host: Forty.config.email_host }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
   config.active_job.queue_adapter = :sidekiq

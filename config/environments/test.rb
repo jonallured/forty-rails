@@ -2,6 +2,7 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
   config.action_controller.perform_caching = false
   config.action_dispatch.show_exceptions = false
+  config.action_mailer.default_url_options = { host: 'http://127.0.0.1' }
   config.action_mailer.delivery_method = :test
   config.action_mailer.perform_caching = false
   config.active_record.dump_schema_after_migration = false
