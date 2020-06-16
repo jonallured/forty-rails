@@ -45,5 +45,9 @@ Rails.application.routes.draw do
   Sidekiq::Web.use(Rack::Auth::Basic, &SidekiqCreds.checker)
   mount Sidekiq::Web, at: '/sidekiq'
 
+  namespace :admin do
+    get :users, to: 'users#index'
+  end
+
   root to: redirect('/today')
 end

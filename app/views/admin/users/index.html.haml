@@ -1,0 +1,32 @@
+#admin
+  %h1 Users
+
+  %table
+    %thead
+      %tr
+        %th id
+        %th email
+        %th sign in
+        %th work days
+        %th type
+    %tbody
+      - users.each do |user|
+        %tr{class: cycle("odd", "even")}
+          %td= user.id
+          %td
+            = user.email
+            - if user.confirmed?
+              (confirmed)
+          %td
+            #{user.sign_in_count} total,
+            #{user.last_sign_in_at && time_ago_in_words(user.last_sign_in_at)} ago
+          %td
+            #{user.work_days.count} total,
+            #{time_ago_in_words(user.work_days.order(:updated_at).last.updated_at)} ago
+          %td
+            - if user.active?
+              active
+            - elsif user.comped?
+              comp
+            - else
+              free
