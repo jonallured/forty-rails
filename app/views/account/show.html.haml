@@ -2,7 +2,7 @@
   = link_to 'sign out', sign_out_path, class: 'button'
   %p Signed in as #{current_user.email}
 
-  - if Feature.enabled?(Feature::UPGRADE)
+  - if Feature.enabled?(:upgrade)
     - if current_user.comped?
       %p You are comped! :heart_eyes:
     - elsif current_user.active?

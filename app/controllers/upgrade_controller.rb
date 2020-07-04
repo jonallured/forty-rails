@@ -20,6 +20,6 @@ class UpgradeController < AuthenticatedController
   private
 
   def ensure_upgrade_feature
-    redirect_to root_path unless Feature.enabled?(Feature::UPGRADE)
+    redirect_to root_path unless Feature.enabled?(:upgrade)
   end
 end
