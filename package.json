@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": ">=10.15.3"
+    "node": ">=12.18.3"
   },
   "name": "forty",
   "private": true,

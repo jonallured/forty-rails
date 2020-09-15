@@ -4,7 +4,7 @@ jobs:
   default:
     working_directory: ~/forty
     docker:
-      - image: artsy/ruby:2.7.1-node-chrome
+      - image: circleci/ruby:2.7.1-node-browsers
         environment:
           RAILS_ENV: test
       - image: circleci/postgres:12.1-alpine
