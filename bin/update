@@ -1,20 +1,21 @@
 #!/bin/bash
 
-set -ex
+set -e
 
-labels="lib update"
+git ensure-main
 
+labels="automerge,dependencies"
 message=$(cat <<"END"
-Library Updates
+Dependency Updates
 
-This commit updates libraries like this:
+This commit updates project dependencies like this:
 
 ```
 $ bundle update
 $ yarn upgrade --latest
 ```
 
-It was automatically run with this script:
+It was automatically created with this script:
 
 ```
 $ ./bin/update
@@ -22,18 +23,12 @@ $ ./bin/update
 END
 )
 
-current_branch=$(git branch --show-current)
-
-if [ "$current_branch" != "master" ]; then
-  echo "must be on master branch"
-  exit 1
-fi
-
+git fetch --all --quiet
 git checkout -b updates
 bundle update
 yarn upgrade --latest
 bundle exec rake
 git add .
 git commit --message "$message"
-git push --set-upstream origin updates
-hub pull-request --message "$message" --labels "$labels"
+git push origin updates
+gh pr create --fill --label "$labels"
