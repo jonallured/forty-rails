@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { WeekColumn } from "./components/WeekColumn"
-import { Header } from "./components/Header"
+import { NullWeekColumns } from "./components/NullWeekColumn"
+import { Header as DefaultHeader, NullHeader } from "./components/Header"
 import { WeekEntryFetcher } from "./WeekEntryFetcher"
 import { FortyTime } from "forty-time"
 import { recalculate } from "./helpers"
@@ -27,6 +28,7 @@ export interface WorkDay {
 export interface WorkWeek {
   dateSpan: string
   grandTotal: FortyTime
+  isDisabled: boolean
   pace: string
   weekToDateIds: number[]
   workDays: WorkDay[]
@@ -75,6 +77,11 @@ export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
     )
   })
 
+  const showNull = props.workWeek.isDisabled
+
+  const columns = showNull ? NullWeekColumns : weekColumns
+  const Header = showNull ? NullHeader : DefaultHeader
+
   const showNudge = user.isFree
 
   return (
@@ -86,7 +93,7 @@ export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
         workWeek={workWeek}
       />
       {showNudge && <Nudge />}
-      <div className="table">{weekColumns}</div>
+      <div className="table">{columns}</div>
     </>
   )
 }

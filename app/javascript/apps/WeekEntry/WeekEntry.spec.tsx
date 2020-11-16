@@ -51,6 +51,7 @@ const defaultProps: WeekEntryProps = {
   workWeek: {
     dateSpan: "Feb 17-21, 2020",
     grandTotal: FortyTime.parse(0),
+    isDisabled: false,
     pace: "even",
     weekToDateIds: [],
     workDays: defaultWorkDays,

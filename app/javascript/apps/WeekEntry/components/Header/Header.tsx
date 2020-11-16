@@ -8,6 +8,34 @@ export interface HeaderProps {
   workWeek: WorkWeek
 }
 
+export const NullHeader: React.FC<HeaderProps> = (props) => {
+  const { lastWeekPath, nextWeekPath, thisWeekPath, workWeek } = props
+  const { dateSpan } = workWeek
+
+  return (
+    <nav>
+      <div className="left null">
+        <h1 className="grand_total">&nbsp;</h1>
+        <p className="pace">&nbsp;</p>
+      </div>
+      <div className="right">
+        <p>{dateSpan}</p>
+        <div>
+          <a className="button" href={lastWeekPath}>
+            &lt;
+          </a>
+          <a className="button" href={thisWeekPath}>
+            this week
+          </a>
+          <a className="button" href={nextWeekPath}>
+            &gt;
+          </a>
+        </div>
+      </div>
+    </nav>
+  )
+}
+
 export const Header: React.FC<HeaderProps> = (props) => {
   const { lastWeekPath, nextWeekPath, thisWeekPath, workWeek } = props
   const { dateSpan, grandTotal, pace } = workWeek
