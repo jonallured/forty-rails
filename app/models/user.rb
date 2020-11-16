@@ -14,6 +14,16 @@ class User < ApplicationRecord
     subscriptions.comped.any?
   end
 
+  def free?
+    !active? && !comped?
+  end
+
+  def as_json(_)
+    {
+      isFree: free?
+    }
+  end
+
   private
 
   def notify_admin

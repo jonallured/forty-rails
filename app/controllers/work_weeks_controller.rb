@@ -9,7 +9,8 @@ class WorkWeeksController < AuthenticatedController
       lastWeekPath: last_week_path,
       nextWeekPath: next_week_path,
       thisWeekPath: this_week_path,
-      workWeek: work_week
+      workWeek: work_week,
+      user: current_user
     }
   end
 

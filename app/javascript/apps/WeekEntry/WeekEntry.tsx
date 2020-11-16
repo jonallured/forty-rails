@@ -5,6 +5,15 @@ import { WeekEntryFetcher } from "./WeekEntryFetcher"
 import { FortyTime } from "forty-time"
 import { recalculate } from "./helpers"
 
+const Nudge = () => {
+  return (
+    <p className="nudge">
+      Free accounts only have access to the current and previous week -{" "}
+      <a href="/upgrade">upgrade your account</a>!
+    </p>
+  )
+}
+
 export interface WorkDay {
   adjustTime: FortyTime
   dayOfWeek: string
@@ -23,12 +32,17 @@ export interface WorkWeek {
   workDays: WorkDay[]
 }
 
+export interface User {
+  isFree: boolean
+}
+
 export interface WeekEntryProps {
   fetcher: WeekEntryFetcher
   lastWeekPath: string
   nextWeekPath: string
   thisWeekPath: string
   workWeek: WorkWeek
+  user: User
 }
 
 const keyToAttributeMap = {
@@ -39,7 +53,7 @@ const keyToAttributeMap = {
 }
 
 export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
-  const { lastWeekPath, nextWeekPath, thisWeekPath } = props
+  const { lastWeekPath, nextWeekPath, thisWeekPath, user } = props
   const [workWeek, setWorkWeek] = useState(props.workWeek)
 
   const handleWorkDayUpdate = (id, key, value): void => {
@@ -61,6 +75,8 @@ export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
     )
   })
 
+  const showNudge = user.isFree
+
   return (
     <>
       <Header
@@ -69,6 +85,7 @@ export const WeekEntry: React.FC<WeekEntryProps> = (props) => {
         thisWeekPath={thisWeekPath}
         workWeek={workWeek}
       />
+      {showNudge && <Nudge />}
       <div className="table">{weekColumns}</div>
     </>
   )

@@ -55,6 +55,9 @@ const defaultProps: WeekEntryProps = {
     weekToDateIds: [],
     workDays: defaultWorkDays,
   },
+  user: {
+    isFree: false,
+  },
 }
 
 describe("WeekEntry", () => {
