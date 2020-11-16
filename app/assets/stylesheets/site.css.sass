@@ -227,6 +227,29 @@ body
               padding: 0
             h1, p
               display: inline
+            &.null
+              display: flex
+              align-items: flex-end
+              margin-top: 30px
+              margin-bottom: 30px
+
+              h1
+                background-color: $bright-green
+                height: 60px
+                width: 200px
+                margin: 0 10px 0 0
+                padding: 0
+
+              p
+                background-color: $off-black
+                height: 16px
+                width: 40px
+                margin: 0
+                padding: 0
+
+              h1, p
+                display: block
+
           .right
             display: flex
             flex-direction: column
@@ -293,3 +316,34 @@ body
                   border-bottom: 10px solid $bright-green
 
     footer
+
+.nullWorkWeek
+  .wrapper
+    display: flex
+    justify-content: flex-end
+    margin: 20px 0 0
+    padding: 0
+    width: 100%
+
+    .inner
+      height: 30px
+
+    &.inTime, &.outTime, &.ptoTime, &.adjustTime
+      border-bottom: 10px solid $light-gray
+
+      .inner
+        background-color: $middle-gray
+        margin-bottom: 10px
+
+    &.inTime .inner
+      width: 30px
+
+    &.outTime .inner, &.ptoTime .inner
+      width: 50px
+
+    &.adjustTime .inner
+      width: 80px
+
+    &.total .inner
+      background-color: $off-black
+      width: 60px

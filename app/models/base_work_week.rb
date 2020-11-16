@@ -5,7 +5,9 @@ class BaseWorkWeek
   attr_reader :number, :user, :year
 
   def self.find_or_create_by(user:, year:, number:)
-    work_week = WorkWeek.new(user, year, number)
+    klass = user.can_view?(year, number) ? WorkWeek : NullWorkWeek
+
+    work_week = klass.new(user, year, number)
     work_week.find_or_create
     work_week
   rescue InvalidDates
@@ -26,6 +28,7 @@ class BaseWorkWeek
   def as_json(_)
     {
       dateSpan: date_span,
+      isDisabled: disabled?,
       weekToDateIds: week_to_date_ids,
       workDays: work_days
     }
@@ -37,14 +40,18 @@ class BaseWorkWeek
 
   private
 
-  def week_to_date_ids
-    raise 'Implement in subclass'
-  end
-
   def date_span
     monday = dates.first
     friday = dates.last
     (monday..friday).to_s(:date_span)
+  end
+
+  def disabled?
+    raise 'Implement in subclass'
+  end
+
+  def week_to_date_ids
+    raise 'Implement in subclass'
   end
 
   def dates

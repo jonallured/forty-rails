@@ -7,6 +7,10 @@ class WorkWeek < BaseWorkWeek
 
   private
 
+  def disabled?
+    false
+  end
+
   def week_to_date_ids
     days = work_days.select { |day| day.date <= Time.zone.today }
     days.map(&:id)
