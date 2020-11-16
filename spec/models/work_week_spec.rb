@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe WorkWeek do
   describe '.find_or_create_by' do
-    let(:user) { FactoryBot.create :user }
+    let(:user) { FactoryBot.create :active_user }
 
     context 'with an invalid year' do
       it 'returns nil' do
