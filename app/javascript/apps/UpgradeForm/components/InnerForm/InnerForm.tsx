@@ -43,12 +43,9 @@ export const InnerForm: React.FC<InnerFormProps> = (props) => {
   }
 
   return (
-    <>
-      <h1>upgrade</h1>
-      <form onSubmit={handleSubmit}>
-        <CardElement options={cardElementOptions} />
-        <input disabled={!stripe} type="submit" value="Pay" />
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <CardElement options={cardElementOptions} />
+      <input disabled={!stripe} type="submit" value="Pay" />
+    </form>
   )
 }
