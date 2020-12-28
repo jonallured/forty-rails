@@ -39,7 +39,7 @@ class UserUpgrade
     sub_attrs = {
       customer: @stripe_customer['id'],
       items: [
-        { plan: Forty.config.stripe_plan_id }
+        { price: Forty.config.stripe_price_id }
       ]
     }
 
