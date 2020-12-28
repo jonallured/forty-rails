@@ -34,7 +34,7 @@ module Forty
       smtp_port: group.dig(:smtp, :port),
       smtp_user_name: group.dig(:smtp, :user_name),
 
-      stripe_plan_id: group.dig(:stripe, :plan_id),
+      stripe_price_id: group.dig(:stripe, :price_id),
       stripe_private_key: group.dig(:stripe, :private_key),
       stripe_public_key: group.dig(:stripe, :public_key)
     }
