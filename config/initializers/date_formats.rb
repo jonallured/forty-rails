@@ -1,3 +1,5 @@
+Date::DATE_FORMATS.merge!(standard: '%m/%d/%Y')
+
 Range::RANGE_FORMATS.merge!(
   date_span: proc do |start, stop|
     same_year = start.year == stop.year

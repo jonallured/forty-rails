@@ -7,4 +7,10 @@ class Subscription < ApplicationRecord
   }
 
   scope :comped, -> { where(comped: true) }
+
+  def status
+    today = Time.zone.today
+    active = starts_on >= today && ends_on >= today
+    active ? 'active' : 'expired'
+  end
 end

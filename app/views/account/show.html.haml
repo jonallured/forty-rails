@@ -1,8 +1,14 @@
 #account
   = link_to 'sign out', sign_out_path, class: 'button'
+
+  %h2 Account Info
+
   %p Signed in as #{current_user.email}
+  %p Account created on #{current_user.created_at.to_date.to_s(:standard)}
 
   - if Feature.enabled?(:upgrade)
+    %h2 Subscription Info
+
     - if current_user.comped?
       %p You are comped! :heart_eyes:
     - elsif current_user.active?
@@ -12,3 +18,21 @@
         Please
         = link_to 'upgrade', upgrade_path
         your account!
+
+    - if current_user.subscriptions.any?
+      %table
+        %thead
+          %tr
+            %th id
+            %th status
+            %th created
+            %th start
+            %th end
+        %tbody
+          - current_user.subscriptions.each do |subscription|
+            %tr
+              %td= subscription.id
+              %td= subscription.status
+              %td= subscription.created_at.to_date.to_s(:standard)
+              %td= subscription.starts_on.to_s(:standard)
+              %td= subscription.ends_on.to_s(:standard)
