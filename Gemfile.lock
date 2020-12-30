@@ -133,6 +133,7 @@ GEM
       temple (>= 0.8.0)
       tilt
     hashdiff (1.0.1)
+    honeybadger (4.7.2)
     http_parser.rb (0.6.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
@@ -335,6 +336,7 @@ DEPENDENCIES
   forty_time
   guard-livereload
   haml
+  honeybadger
   jbuilder
   listen
   pg
