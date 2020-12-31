@@ -13,8 +13,9 @@ class UpgradeController < AuthenticatedController
 
   def create
     stripe_source_id = params[:stripe_source_id]
-    UserUpgrade.process(current_user, stripe_source_id)
-    render json: {}
+    upgrade = UserUpgrade.new(current_user, stripe_source_id)
+    upgrade.process
+    render json: upgrade
   end
 
   private
