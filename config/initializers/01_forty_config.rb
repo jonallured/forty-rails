@@ -24,6 +24,9 @@ module Forty
       admin_email: group[:admin_email],
       email_host: group[:email_host],
 
+      honeybadger_api_key: group.dig(:honeybadger, :api_key),
+      honeybadger_env: group.dig(:honeybadger, :env),
+
       sidekiq_admin_username: group.dig(:sidekiq_admin, :username),
       sidekiq_admin_password: group.dig(:sidekiq_admin, :password),
 
