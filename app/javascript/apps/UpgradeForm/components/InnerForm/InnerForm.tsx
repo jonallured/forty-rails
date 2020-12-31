@@ -2,6 +2,9 @@ import React, { useState } from "react"
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { UpgradeFormFetcher } from "../../UpgradeFormFetcher"
 
+const generalPaymentErrorMessage =
+  "Processing payment information is currently not working, please try again later."
+
 export interface InnerFormProps {
   email: string
   fetcher: UpgradeFormFetcher
@@ -24,13 +27,13 @@ export const InnerForm: React.FC<InnerFormProps> = (props) => {
 
   const handleUpgradeError = (error): void => {
     honeybadger.notify(error)
-    setErrorMessage(error.message)
+    setErrorMessage(generalPaymentErrorMessage)
   }
 
   const handleSourceResult = (result): void => {
     if (result.error) {
       honeybadger.notify(result)
-      setErrorMessage(result.error.message)
+      setErrorMessage(generalPaymentErrorMessage)
     } else {
       fetcher
         .createUpgrade(result.source.id)
@@ -41,7 +44,7 @@ export const InnerForm: React.FC<InnerFormProps> = (props) => {
 
   const handleSourceError = (error): void => {
     honeybadger.notify(error)
-    setErrorMessage(error)
+    setErrorMessage(generalPaymentErrorMessage)
   }
 
   const handleSubmit = (e): void => {
