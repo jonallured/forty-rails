@@ -3,6 +3,8 @@ class UserUpgrade
     new(user, stripe_source_id).process
   end
 
+  attr_accessor :error
+
   def initialize(user, stripe_source_id)
     @user = user
     @stripe_source_id = stripe_source_id
@@ -13,6 +15,14 @@ class UserUpgrade
     update_user
     create_stripe_subscription
     subscribe_user
+  rescue Stripe::CardError => e
+    @error = e.error.message
+  end
+
+  def as_json(*_args)
+    {
+      error: error
+    }
   end
 
   private
