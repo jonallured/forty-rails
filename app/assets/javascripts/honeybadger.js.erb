@@ -1,0 +1,5 @@
+var honeybadgerConfig = {
+  apiKey: "<%= Forty.config.honeybadger_api_key %>",
+  environment: "<%= Forty.config.honeybadger_env %>"
+};
+Honeybadger.configure(honeybadgerConfig);
