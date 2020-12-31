@@ -5,40 +5,31 @@ import { UpgradeFormFetcher } from "../../UpgradeFormFetcher"
 export interface InnerFormProps {
   email: string
   fetcher: UpgradeFormFetcher
+  honeybadger: { notify: (any) => void }
 }
 
 export const InnerForm: React.FC<InnerFormProps> = (props) => {
-  const { email, fetcher } = props
+  const { email, honeybadger, fetcher } = props
   const stripe = useStripe()
   const elements = useElements()
   const [errorMessage, setErrorMessage] = useState("")
 
-  const handleUpgradeError = (error): void => {
-    // i should be sending this to Honeybadger!
-    console.log(error)
-    setErrorMessage(error.message)
-  }
-
   const handleUpgradeResult = (result): void => {
     if (result.error) {
-      // i should be sending this to Honeybadger!
-      console.log(result.error)
       setErrorMessage(result.error)
     } else {
       window.location.assign("/thanks")
     }
   }
 
-  const handleSourceError = (error): void => {
-    // i should be sending this to Honeybadger!
-    console.log(error)
-    setErrorMessage(error)
+  const handleUpgradeError = (error): void => {
+    honeybadger.notify(error)
+    setErrorMessage(error.message)
   }
 
   const handleSourceResult = (result): void => {
     if (result.error) {
-      // i should be sending this to Honeybadger!
-      console.log(result.error)
+      honeybadger.notify(result)
       setErrorMessage(result.error.message)
     } else {
       fetcher
@@ -46,6 +37,11 @@ export const InnerForm: React.FC<InnerFormProps> = (props) => {
         .then(handleUpgradeResult)
         .catch(handleUpgradeError)
     }
+  }
+
+  const handleSourceError = (error): void => {
+    honeybadger.notify(error)
+    setErrorMessage(error)
   }
 
   const handleSubmit = (e): void => {

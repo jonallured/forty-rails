@@ -10,10 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const metaTag = document.querySelector("meta[name=csrf-token]")
   const token = metaTag && metaTag.getAttribute("content")
   const fetcher = new UpgradeFormFetcher(token)
+  const honeybadger = window["Honeybadger"]
 
   const props: UpgradeFormProps = {
     ...parsedProps,
     fetcher,
+    honeybadger,
   }
 
   ReactDOM.render(<UpgradeForm {...props} />, root)
