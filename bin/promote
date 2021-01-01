@@ -5,10 +5,10 @@ compare_url=$(heroku pipelines:diff -r staging | grep "compare")
 shas=$(echo $compare_url | tr -s '...' '/' | cut -d '/' -f 7-8 )
 production_sha=$(echo $shas | cut -d '/' -f 1)
 staging_sha=$(echo $shas | cut -d '/' -f 2)
-master_sha=$(git rev-list master -n 1)
+main_sha=$(git rev-list main -n 1)
 
-if [ $master_sha != $staging_sha ]; then
-  echo "master and staging not in sync!"
+if [ $main_sha != $staging_sha ]; then
+  echo "main and staging not in sync!"
   exit 2
 fi
 
