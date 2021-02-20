@@ -9,6 +9,6 @@ Warning[:deprecated] = false
 module Forty
   class Application < Rails::Application
     config.active_record.schema_format = :sql
-    config.load_defaults 6.0
+    config.load_defaults 6.1
   end
 end
