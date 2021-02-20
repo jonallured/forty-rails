@@ -6,6 +6,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
   NewCops: enable
+  SuggestExtensions: false
 
 Layout/LeadingCommentSpace:
   Exclude:
