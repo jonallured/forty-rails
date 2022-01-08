@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Free user sees disabled weeks', js: true do
   before { travel_to(Time.zone.local(2020, 1, 7)) }
-  after { travel_back }
 
   it 'shows disabled weeks for next week and week before last' do
     last_year_path = work_week_path('2019-52')

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Week Entry Navigation', js: true do
   before { travel_to(Time.zone.local(2020, 1, 7)) }
-  after { travel_back }
 
   it 'moves from week to week' do
     last_week_path = work_week_path('2020-01')
