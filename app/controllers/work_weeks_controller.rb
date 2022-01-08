@@ -1,7 +1,7 @@
 class WorkWeeksController < AuthenticatedController
   expose(:work_week) do
     year, number = params[:target].split('-')
-    WorkWeek.find_or_create_by(user: current_user, year: year, number: number)
+    WorkWeek.find_or_create_by(current_user, year, number)
   end
 
   expose(:props) do

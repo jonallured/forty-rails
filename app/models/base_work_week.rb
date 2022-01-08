@@ -4,7 +4,7 @@ class BaseWorkWeek
   attr_accessor :work_days
   attr_reader :number, :user, :year
 
-  def self.find_or_create_by(user:, year:, number:)
+  def self.find_or_create_by(user, year, number)
     klass = user.can_view?(year, number) ? WorkWeek : NullWorkWeek
 
     work_week = klass.new(user, year, number)

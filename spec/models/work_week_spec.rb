@@ -6,16 +6,14 @@ describe WorkWeek do
 
     context 'with an invalid year' do
       it 'returns nil' do
-        attrs = { user: user, year: 'asdf', number: '1' }
-        work_week = WorkWeek.find_or_create_by(attrs)
+        work_week = WorkWeek.find_or_create_by(user, 'asdf', '1')
         expect(work_week).to be_nil
       end
     end
 
     context 'with an invalid number' do
       it 'returns nil' do
-        attrs = { user: user, year: '2017', number: 'asdf' }
-        work_week = WorkWeek.find_or_create_by(attrs)
+        work_week = WorkWeek.find_or_create_by(user, '2017', 'asdf')
         expect(work_week).to be_nil
       end
     end
@@ -28,8 +26,7 @@ describe WorkWeek do
         thursday = FactoryBot.create :work_day, user: user, date: '2017-01-05'
         friday = FactoryBot.create :work_day, user: user, date: '2017-01-06'
 
-        attrs = { user: user, year: '2017', number: '1' }
-        work_week = WorkWeek.find_or_create_by(attrs)
+        work_week = WorkWeek.find_or_create_by(user, '2017', '1')
 
         expect(WorkDay.count).to eq 5
         expect(work_week.work_days).to eq(
@@ -47,8 +44,7 @@ describe WorkWeek do
     context 'with a new year and number' do
       it 'creates WorkDay records and returns a WorkWeek for them' do
         expect(WorkDay.count).to eq 0
-        attrs = { user: user, year: '2017', number: '1' }
-        work_week = WorkWeek.find_or_create_by(attrs)
+        work_week = WorkWeek.find_or_create_by(user, '2017', '1')
         expect(WorkDay.count).to eq 5
         dates = work_week.work_days.map(&:date).map(&:to_s)
         expect(dates).to eq(
