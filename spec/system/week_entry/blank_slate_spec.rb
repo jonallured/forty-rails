@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Blank slate view', js: true do
   before { travel_to(Time.zone.local(2020, 1, 7)) }
-  after { travel_back }
 
   it 'shows zeros for daily totals' do
     user = FactoryBot.create(:user)

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Free user sees nudge', js: true do
   before { travel_to(Time.zone.local(2020, 1, 7)) }
-  after { travel_back }
 
   it 'always nudges to upgrade' do
     last_year_path = work_week_path('2019-52')

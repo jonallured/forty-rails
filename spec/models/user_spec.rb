@@ -19,7 +19,6 @@ describe User do
     let(:free_user) { FactoryBot.create :free_user }
 
     before { travel_to(Time.zone.local(2020, 1, 7)) }
-    after { travel_back }
 
     context 'with this week' do
       let(:year) { '2020' }

@@ -40,7 +40,6 @@ full_week_data = {
 
 describe 'Full week entry', js: true do
   before { travel_to(Time.zone.local(2020, 1, 7)) }
-  after { travel_back }
 
   it 'computes week total' do
     user = FactoryBot.create(:user)
