@@ -13,14 +13,8 @@ export interface TimeInputProps {
 }
 
 export const TimeInput: React.FC<TimeInputProps> = (props) => {
-  const {
-    autoFocus,
-    handleWorkDayUpdate,
-    id,
-    placeholder,
-    property,
-    time,
-  } = props
+  const { autoFocus, handleWorkDayUpdate, id, placeholder, property, time } =
+    props
 
   const [value, setValue] = useState(time.toString())
 

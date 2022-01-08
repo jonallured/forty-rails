@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "name": "forty",
   "private": true,
@@ -9,7 +9,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
-    "@rails/webpacker": "^5.2.1",
+    "@rails/webpacker": "5.4.3",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.9.0",
     "@types/jest": "^26.0.14",
@@ -19,7 +19,9 @@
     "forty-time": "^0.0.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.4.1",
@@ -32,7 +34,7 @@
     "eslint-plugin-react": "^7.21.4",
     "jest": "^26.5.3",
     "prettier": "^2.1.2",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3"
   },
   "jest": {
     "roots": [
