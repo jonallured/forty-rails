@@ -43,7 +43,7 @@ class BaseWorkWeek
   def date_span
     monday = dates.first
     friday = dates.last
-    (monday..friday).to_s(:date_span)
+    (monday..friday).to_formatted_s(:date_span)
   end
 
   def disabled?

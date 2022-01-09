@@ -4,7 +4,7 @@
   %h2 Account Info
 
   %p Signed in as #{current_user.email}
-  %p Account created on #{current_user.created_at.to_date.to_s(:standard)}
+  %p Account created on #{current_user.created_at.to_date.to_formatted_s(:standard)}
 
   - if Feature.enabled?(:upgrade)
     %h2 Subscription Info
@@ -33,6 +33,6 @@
             %tr
               %td= subscription.id
               %td= subscription.status
-              %td= subscription.created_at.to_date.to_s(:standard)
-              %td= subscription.starts_on.to_s(:standard)
-              %td= subscription.ends_on.to_s(:standard)
+              %td= subscription.created_at.to_date.to_formatted_s(:standard)
+              %td= subscription.starts_on.to_formatted_s(:standard)
+              %td= subscription.ends_on.to_formatted_s(:standard)

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read('.tool-versions').split[1]
 
-gem 'rails', '6.1.4.4'
+gem 'rails', '7.0.1'
 
 gem 'pg'
 gem 'puma'
@@ -26,7 +26,6 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
-  gem 'web-console'
 end
 
 group :development, :test do
