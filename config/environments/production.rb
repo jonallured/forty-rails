@@ -9,7 +9,7 @@ Rails.application.configure do
   config.active_storage.service = :local
   config.active_support.report_deprecations = false
   config.assets.compile = false
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   config.cache_classes = true
   config.consider_all_requests_local = false
   config.eager_load = true
