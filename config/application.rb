@@ -7,6 +7,6 @@ Bundler.require(*Rails.groups)
 module Forty
   class Application < Rails::Application
     config.active_record.schema_format = :sql
-    config.load_defaults 6.1
+    config.load_defaults 7.0
   end
 end
