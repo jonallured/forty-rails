@@ -63,11 +63,11 @@ heroku git:remote --remote production --app forty-production > /dev/null
 
 # STEP 4
 printf "${CLEAR_LINE}[4/${STEPS}]  setting up dotenv"
-copy_env
+copy_env heroku
 
 # STEP 5
 printf "${CLEAR_LINE}[5/${STEPS}]  database setup"
-bundle exec rake db:migrate:reset > /dev/null
+dotenv bundle exec rake db:migrate:reset > /dev/null
 
 # FINISH
 printf "${CLEAR_LINE}[${STEPS}/${STEPS}]${GREEN}  finished!${NO_COLOR}\n"
